@@ -1,7 +1,34 @@
 {
   "name": "musicplayer",
   "version": "0.1.0",
+  "description": "musicplayer for all your favorite songs",
+  "author": "Bernadette Christiner",
+  "build": {
+    "appId": "react.electron",
+    "productName": "react-electron",
+    "mac": {
+      "icon": "build/logo512.png",
+      "target": "tar.gz"
+    },
+    "linux": {
+      "category": "Utils",
+      "icon": "build/icon.png",
+      "packageCategory": "utils",
+      "maintainer": "your name <your email>",
+      "asar": true,
+      "target": [
+        "deb",
+        "tar.xz"
+      ],
+      "synopsis": "Basically same as description but shorter"
+    },
+    "win": {
+      "icon": "build/icon.png",
+      "target": "nsis"
+    }
+  },
   "main": "public/electron.js",
+  "homepage": "./",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
