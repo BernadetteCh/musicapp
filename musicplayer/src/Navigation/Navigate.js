@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Navigate = () => {
   return (
-    <div>
+    <div style={{marginTop:"140px"}}>
       {" "}
       <ul>
         <li>
