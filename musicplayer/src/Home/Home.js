@@ -5,7 +5,7 @@ import "./Home.css";
 const Home = () => {
   return (
     <div>
-      <h1 className="header" style={{ fontSize: "80px" }}>
+      <h1 className="header" style={{ fontSize: "60px" }}>
         MyMusicPlayer
       </h1>
       <div className="album-picutres">

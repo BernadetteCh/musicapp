@@ -1,7 +1,6 @@
 h1 {
   /*transform: translate(-50%, -50%);*/
-  letter-spacing: 5px;
-
+  letter-spacing: 12px;
   font-weight: bold;
   background-image: linear-gradient(
     to right,
@@ -22,16 +21,31 @@ img {
   border-radius: 8px;
   width: 180px;
 }
+input {
+  padding: 0.5rem;
+  border: double 1px transparent;
+  border-radius: 12px;
+  width: 300px;
+  background-image: linear-gradient(black, black),
+    linear-gradient(
+      to right,
+      #462523 0,
+      #cb9b51 12%,
+      #f6e27a 45%,
+      #f6f2c0 50%,
+      #f6e27a 55%,
+      #cb9b51 78%,
+      #462523 100%
+    );
+
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
 .search-section {
   margin-top: 80px;
 }
-.search-section input {
-  width: 300px;
-  padding: 10px;
-  border-radius: 12px;
-  background: #ffffff36;
-  border: none;
-}
+
 .icon {
   width: 20px;
 }
