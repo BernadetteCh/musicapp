@@ -1,7 +1,7 @@
 h1 {
   /*transform: translate(-50%, -50%);*/
   letter-spacing: 5px;
-  font-size: 80px;
+  font-size: 180px;
   font-weight: bold;
   background-image: linear-gradient(
     to right,
@@ -15,7 +15,4 @@ h1 {
   );
   color: transparent;
   background-clip: text;
- 
 }
-
-
