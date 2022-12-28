@@ -1,7 +1,9 @@
 import "./App.css";
 import Home from "./Home/Home";
-import Playlists from "./Playlists";
+import Playlists from "./Playlists/Playlists";
 import Navigation from "./Navigation/Navigate";
+import FavoriteMusic from "./FavoriteMusic/FavoriteMusic";
+import AddMusic from "./AddMusic/AddMusic";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -19,7 +21,9 @@ function App() {
           <Col>
             <Routes>
               <Route path="/" element={<Home />}></Route>
+              <Route path="/favorites" element={<FavoriteMusic />}></Route>
               <Route path="/playlists" element={<Playlists />}></Route>
+              <Route path="/addSong" element={<AddMusic />}></Route>
             </Routes>
           </Col>
         </Row>

@@ -66,6 +66,7 @@ table td {
 }
 .favorite-song {
   cursor: pointer;
+  font-size: 20px;
 
   background: radial-gradient(
       ellipse farthest-corner at right bottom,

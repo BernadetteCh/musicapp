@@ -4,20 +4,20 @@ import { Link } from "react-router-dom";
 
 const Navigate = () => {
   return (
-    <div style={{marginTop:"140px"}}>
+    <div style={{ marginTop: "140px" }}>
       {" "}
       <ul>
         <li>
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/search">Search</Link>
+          <Link to="/addSong">Add a Song</Link>
         </li>
         <li>
           <Link to="/playlists">Playlists</Link>
         </li>
         <li>
-          <Link to="/lieblingssongs">Lieblingssongs</Link>
+          <Link to="/favorites">Lieblingssongs</Link>
         </li>
       </ul>
     </div>
