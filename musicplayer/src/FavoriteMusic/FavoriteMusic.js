@@ -1,7 +1,12 @@
 import React from "react";
+import MusicTable from "../Home/MusicTable";
 
 const FavoriteMusic = () => {
-  return <div>Hi from lieblingssongs</div>;
+  return (
+    <div>
+      <MusicTable />
+    </div>
+  );
 };
 
 export default FavoriteMusic;
