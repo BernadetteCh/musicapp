@@ -9,7 +9,7 @@ import ClassicCover from "./classic-playlist.jpg";
 import FocusCover from "./focus-playlist.jpeg";
 import HipHopCover from "./hip-hop-playlist.jpg";
 import AustroPopCover from "./austro-pop-playlist.jpg";
-import NinetiesCover from "./90s-playlist.jpeg";
+import NinetiesCover from "./90s-playlist.jpg";
 import MusicAroundTheWorld from "./music-around-the-world.jpg";
 
 const Playlist = () => {
@@ -59,6 +59,7 @@ const Playlist = () => {
               src={NinetiesCover}
               alt="90s-music-cover"
               title="Hit-me-baby-one-more-time"
+              style={{ height: "180px" }}
             ></img>
           </Col>
           <Col>
