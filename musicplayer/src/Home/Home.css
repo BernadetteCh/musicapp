@@ -83,6 +83,7 @@ table td {
       #5d4a1f 62.5%,
       #5d4a1f 100%
     );
+  background-clip: border-box;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
