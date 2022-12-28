@@ -1,18 +1,37 @@
 h1 {
   /*transform: translate(-50%, -50%);*/
   letter-spacing: 5px;
-  font-size: 180px;
+
   font-weight: bold;
   background-image: linear-gradient(
     to right,
     #462523 0,
-    #cb9b51 22%,
+    #cb9b51 12%,
     #f6e27a 45%,
     #f6f2c0 50%,
     #f6e27a 55%,
     #cb9b51 78%,
     #462523 100%
   );
+  /*background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+                radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);*/
   color: transparent;
   background-clip: text;
+}
+img {
+  border-radius: 8px;
+  width: 180px;
+}
+.search-section {
+  margin-top: 80px;
+}
+.search-section input {
+  width: 300px;
+  padding: 10px;
+  border-radius: 12px;
+  background: #ffffff36;
+  border: none;
+}
+.icon {
+  width: 20px;
 }
