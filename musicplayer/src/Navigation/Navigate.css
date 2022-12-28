@@ -4,4 +4,12 @@ ul li {
 }
 ul li a {
     text-decoration: none;
+    color: white;
+     letter-spacing: 5px;
+     font-weight: 900;
+     font-size: 20px;
+
+}
+ul li a:hover{
+  color: rgba(255, 255, 255, 0.683);
 }
