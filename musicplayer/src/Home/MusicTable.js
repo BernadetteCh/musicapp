@@ -10,7 +10,7 @@ const MusicTable = () => {
           <tr>
             <th>Title</th>
             <th>Artist</th>
-            <th>Lieblingssong?!</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -18,7 +18,7 @@ const MusicTable = () => {
             <td>I walk on Water</td>
             <td>Kaleo</td>
             <td>
-              <i class="fa-solid fa-heart favorite-song"></i>
+              <i className="fa-solid fa-heart favorite-song"></i>
             </td>
           </tr>
         </tbody>
