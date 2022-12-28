@@ -1,7 +1,9 @@
 import React from "react";
 import AlbumPictures from "./AlbumPictures";
-import SearchForMusic from "./Filter";
+import SearchForMusic from "../Input";
 import MusicTable from "./MusicTable";
+
+import icon from "../images/searchicon.png";
 import "./Home.css";
 
 const Home = () => {
@@ -11,7 +13,8 @@ const Home = () => {
         MyMusicPlayer
       </h1>
       <AlbumPictures />
-      <SearchForMusic />
+      <SearchForMusic type="text" placeholder="...search" />
+      <img src={icon} alt="search-icon" className="icon"></img>
       <MusicTable />
     </div>
   );
