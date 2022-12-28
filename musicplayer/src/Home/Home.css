@@ -88,3 +88,57 @@ table td {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+form select {
+  padding: 0.5rem;
+  border: double 1px transparent;
+  border-radius: 12px;
+  width: 300px;
+  margin-top: 60px;
+
+  background-image: linear-gradient(black, black),
+    linear-gradient(
+      to right,
+      #462523 0,
+      #cb9b51 12%,
+      #f6e27a 45%,
+      #f6f2c0 50%,
+      #f6e27a 55%,
+      #cb9b51 78%,
+      #462523 100%
+    );
+
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+form option {
+  background: black;
+  color: white;
+}
+
+form button {
+  display: block;
+
+  background: radial-gradient(
+      ellipse farthest-corner at right bottom,
+      #fedb37 2%,
+      #fdb931 8%,
+      #9f7928 20%,
+      #5518aa 40%,
+
+      transparent 80%
+    ),
+    radial-gradient(
+      ellipse farthest-corner at left top,
+      #ffffff 0%,
+      #ffffac 8%,
+      #d1b464 25%,
+      #5d4a1f 62.5%,
+      #5d4a1f 100%
+    );
+  color: white;
+  letter-spacing: 4px;
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+  margin-top: 60px;
+}
