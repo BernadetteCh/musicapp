@@ -1,16 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPause } from "@fortawesome/free-solid-svg-icons";
-
+import PlayPauseIcon from "../PlayPauseIcon";
 import "../Home/Home.css";
 
-const MusicTable = () => {
+const MusicTable = ({ sameRender, state }) => {
+  const [playing, setPlaying] = useState();
+
+  const playPause = () => {
+    sameRender(state);
+  };
+
+  // useEffect(() => {
+  //  setToggle((toggle)=>!toggle)
+  // }, [state, sameRender]);
   return (
     <div className="music-table" style={{ marginTop: "80px" }}>
       <Table style={{ color: "white" }}>
         <thead>
           <tr>
+            <th></th>
             <th>Title</th>
             <th>Artist</th>
             <th></th>
@@ -19,8 +27,9 @@ const MusicTable = () => {
         <tbody>
           <tr>
             <td>
-              <FontAwesomeIcon icon={faPause} />
+              <PlayPauseIcon sameRender={playPause} state={state} />
             </td>
+            <td>I Walk On Water</td>
             <td>Kaleo</td>
             <td>
               <i className="fa-solid fa-heart favorite-song"></i>

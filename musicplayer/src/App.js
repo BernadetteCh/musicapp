@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import "./App.css";
 import Home from "./Home/Home";
 import Playlists from "./Playlists/Playlists";
@@ -13,6 +14,12 @@ import AudioPlayer from "./AudioPlayer/AudioPlayer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
+  const [playing, setPlaying] = useState(false);
+
+  const sameRender = () => {
+    setPlaying((playing) => !playing);
+  };
+  console.log(playing);
   return (
     <BrowserRouter>
       <Container className="container">
@@ -22,14 +29,17 @@ function App() {
           </Col>
           <Col>
             <Routes>
-              <Route path="/" element={<Home />}></Route>
+              <Route
+                path="/"
+                element={<Home sameRender={sameRender} state={playing} />}
+              ></Route>
               <Route path="/favorites" element={<FavoriteMusic />}></Route>
               <Route path="/playlists" element={<Playlists />}></Route>
               <Route path="/addSong" element={<AddMusic />}></Route>
             </Routes>
           </Col>
         </Row>
-        <AudioPlayer />
+        <AudioPlayer sameRender={sameRender} state={playing} />
       </Container>
     </BrowserRouter>
   );

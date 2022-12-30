@@ -6,7 +6,7 @@ import MusicTable from "./MusicTable";
 import icon from "../images/searchicon.png";
 import "./Home.css";
 
-const Home = () => {
+const Home = ({ sameRender, state }) => {
   return (
     <div className="mb-5">
       {/* <h1 className="header" style={{ fontSize: "28px" }}>
@@ -15,7 +15,7 @@ const Home = () => {
       <AlbumPictures />
       <SearchForMusic type="text" placeholder="...search" />
       <img src={icon} alt="search-icon" className="icon"></img>
-      <MusicTable />
+      <MusicTable sameRender={sameRender} state={state} />
     </div>
   );
 };
