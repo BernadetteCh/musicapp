@@ -8,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Kaleo from "./Kaleo - I walk on Water.mp3";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -27,6 +28,11 @@ function App() {
             </Routes>
           </Col>
         </Row>
+        <div style={{ textAlign: "center", marginTop: "100px" }}>
+          <figure>
+            <audio controls src={Kaleo}></audio>
+          </figure>
+        </div>
       </Container>
     </BrowserRouter>
   );
