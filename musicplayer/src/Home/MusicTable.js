@@ -1,5 +1,8 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPause } from "@fortawesome/free-solid-svg-icons";
+
 import "../Home/Home.css";
 
 const MusicTable = () => {
@@ -15,7 +18,9 @@ const MusicTable = () => {
         </thead>
         <tbody>
           <tr>
-            <td>I walk on Water</td>
+            <td>
+              <FontAwesomeIcon icon={faPause} />
+            </td>
             <td>Kaleo</td>
             <td>
               <i className="fa-solid fa-heart favorite-song"></i>

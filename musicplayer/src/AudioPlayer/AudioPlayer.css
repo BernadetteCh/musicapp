@@ -1,0 +1,18 @@
+figure {
+  display: flex;
+  justify-content: space-around;
+}
+
+.audioplayer-container {
+  margin: 50px auto;
+  max-width: 400px;
+}
+
+.play-icon,
+.pause-icon,
+.track-back-icon,
+.track-forward-icon {
+  display: inline;
+  font-size: 35px;
+  color: #80808099;
+}

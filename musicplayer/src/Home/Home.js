@@ -9,9 +9,9 @@ import "./Home.css";
 const Home = () => {
   return (
     <div className="mb-5">
-      <h1 className="header" style={{ fontSize: "60px" }}>
-        MyMusicPlayer
-      </h1>
+      {/* <h1 className="header" style={{ fontSize: "28px" }}>
+        Where words fail, music speaks. ...
+      </h1> */}
       <AlbumPictures />
       <SearchForMusic type="text" placeholder="...search" />
       <img src={icon} alt="search-icon" className="icon"></img>
