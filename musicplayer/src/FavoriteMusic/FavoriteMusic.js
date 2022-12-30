@@ -1,10 +1,10 @@
 import React from "react";
 import MusicTable from "../Home/MusicTable";
 
-const FavoriteMusic = () => {
+const FavoriteMusic = ({ sameRender, state }) => {
   return (
     <div>
-      <MusicTable />
+      <MusicTable sameRender={sameRender} state={state} />
     </div>
   );
 };

@@ -26,7 +26,11 @@ input {
   border: double 1px transparent;
   border-radius: 12px;
   width: 300px;
-  background-image: linear-gradient(black, black),
+  padding: 8px 18px;
+  color: #b0b0b0;
+  background: black;
+  border: 1px solid white;
+  /* background-image: linear-gradient(black, black),
     linear-gradient(
       to right,
       #462523 0,
@@ -39,7 +43,7 @@ input {
     );
 
   background-origin: border-box;
-  background-clip: padding-box, border-box;
+  background-clip: padding-box, border-box; */
 }
 table th {
   border-style: none;
@@ -80,10 +84,27 @@ table td {
       ellipse farthest-corner at left top,
       #ffffff 0%,
       #ffffac 8%,
+      #d1b464 45%,
+      #5d4a1f 80.5%,
+      #5d4a1f 100%
+    );
+
+  /* background: radial-gradient(
+      ellipse farthest-corner at right bottom,
+      #fedb37 0%,
+      #fdb931 8%,
+      #9f7928 30%,
+      #5518aa 30%,
+      transparent 80%
+    ),
+    radial-gradient(
+      ellipse farthest-corner at left top,
+      #ffffff 0%,
+      #ffffac 8%,
       #d1b464 25%,
       #5d4a1f 62.5%,
       #5d4a1f 100%
-    );
+    ); */
   background-clip: border-box;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

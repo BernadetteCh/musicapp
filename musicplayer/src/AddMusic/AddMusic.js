@@ -9,7 +9,7 @@ const AddMusic = () => {
         <Input type="text" placeholder="add mp3 file" />
         <Input type="text" placeholder="Songtitle" />
         <Input type="text" placeholder="Artist" />
-        <select style={{ background: "#d4a50d63", color: "white" }}>
+        <select style={{ background: "#d4a50d3d", color: "white" }}>
           <option defaultValue="select" placeholder="select">
             -- Select Playlist --
           </option>

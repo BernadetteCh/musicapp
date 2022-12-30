@@ -13,8 +13,11 @@ const Home = ({ sameRender, state }) => {
         Where words fail, music speaks. ...
       </h1> */}
       <AlbumPictures />
-      <SearchForMusic type="text" placeholder="...search" />
-      <img src={icon} alt="search-icon" className="icon"></img>
+      <SearchForMusic
+        type="text"
+        placeholder="What would you like to hear ? "
+      />
+      {/* <img src={icon} alt="search-icon" className="icon"></img> */}
       <MusicTable sameRender={sameRender} state={state} />
     </div>
   );

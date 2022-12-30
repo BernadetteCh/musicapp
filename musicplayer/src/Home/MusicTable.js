@@ -1,18 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Table from "react-bootstrap/Table";
 import PlayPauseIcon from "../PlayPauseIcon";
 import "../Home/Home.css";
 
 const MusicTable = ({ sameRender, state }) => {
-  const [playing, setPlaying] = useState();
-
   const playPause = () => {
     sameRender(state);
   };
 
-  // useEffect(() => {
-  //  setToggle((toggle)=>!toggle)
-  // }, [state, sameRender]);
   return (
     <div className="music-table" style={{ marginTop: "80px" }}>
       <Table style={{ color: "white" }}>

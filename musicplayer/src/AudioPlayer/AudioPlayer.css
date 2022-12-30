@@ -7,12 +7,32 @@ figure {
   margin: 50px auto;
   max-width: 400px;
 }
-
+.track-back-icon,
+.track-forward-icon,
+.play-icon,
+.pause-icon {
+  background: linear-gradient(
+    to right,
+    #462523 0,
+    #cb9b51 12%,
+    #f6e27a 45%,
+    #f6f2c0 50%,
+    #f6e27a 55%,
+    #cb9b51 78%,
+    #462523 100%
+  );
+  background-clip: border-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+/* .play-icon,
+.pause-icon {
+  color: #b0b0b0;
+} */
 .play-icon,
 .pause-icon,
 .track-back-icon,
 .track-forward-icon {
   display: inline;
   font-size: 35px;
-  color: #80808099;
 }

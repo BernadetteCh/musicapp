@@ -19,7 +19,7 @@ function App() {
   const sameRender = () => {
     setPlaying((playing) => !playing);
   };
-  console.log(playing);
+
   return (
     <BrowserRouter>
       <Container className="container">
@@ -33,7 +33,12 @@ function App() {
                 path="/"
                 element={<Home sameRender={sameRender} state={playing} />}
               ></Route>
-              <Route path="/favorites" element={<FavoriteMusic />}></Route>
+              <Route
+                path="/favorites"
+                element={
+                  <FavoriteMusic sameRender={sameRender} state={playing} />
+                }
+              ></Route>
               <Route path="/playlists" element={<Playlists />}></Route>
               <Route path="/addSong" element={<AddMusic />}></Route>
             </Routes>
