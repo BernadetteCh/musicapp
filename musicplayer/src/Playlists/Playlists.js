@@ -15,7 +15,7 @@ import MusicAroundTheWorld from "./music-around-the-world.jpg";
 const Playlist = () => {
   return (
     <div>
-      <Container>
+      <Container className="mb-5">
         <Row>
           <Col>
             <img src={JazzCover} alt="jazz-cover" title="jazz-playlist"></img>
@@ -30,6 +30,8 @@ const Playlist = () => {
               title="classic-music"
             ></img>
           </Col>
+        </Row>
+        <Row>
           <Col>
             <img
               src={FocusCover}
@@ -37,8 +39,6 @@ const Playlist = () => {
               title="time to focus 🧠"
             ></img>
           </Col>
-        </Row>
-        <Row>
           <Col>
             <img
               src={HipHopCover}
@@ -54,6 +54,8 @@ const Playlist = () => {
               title="german-austrian-language songs"
             ></img>
           </Col>
+        </Row>
+        <Row>
           <Col>
             <img
               src={NinetiesCover}

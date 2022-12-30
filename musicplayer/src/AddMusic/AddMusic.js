@@ -4,7 +4,7 @@ import "../Home/Home.css";
 
 const AddMusic = () => {
   return (
-    <div style={{ marginLeft: "5%" }}>
+    <div style={{ marginLeft: "5%" }} className="mb-5">
       <form>
         <Input type="text" placeholder="add mp3 file" />
         <Input type="text" placeholder="Songtitle" />

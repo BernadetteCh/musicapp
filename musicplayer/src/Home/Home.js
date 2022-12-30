@@ -8,7 +8,7 @@ import "./Home.css";
 
 const Home = () => {
   return (
-    <div>
+    <div className="mb-5">
       <h1 className="header" style={{ fontSize: "60px" }}>
         MyMusicPlayer
       </h1>
