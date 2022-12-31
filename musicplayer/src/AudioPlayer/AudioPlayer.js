@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import PlayerPauseIcon from "../PlayPauseIcon";
+import BackwardStepIcon from "../Icons/Backward-step.png";
+import ForwardStepIcon from "../Icons/Forward-step.png";
 import "./AudioPlayer.css";
 import Kaleo from "../Kaleo - I walk on Water.mp3";
 
@@ -20,9 +22,17 @@ const AudioPlayer = ({ sameRender, state }) => {
     <div className="audioplayer-container">
       <figure>
         <audio src={Kaleo} ref={audioElem}></audio>
-        <i className="fa-sharp fa-solid fa-backward-step track-back-icon"></i>
+        <img
+          src={BackwardStepIcon}
+          alt="backward-step-icon"
+          className="track-back-icon"
+        ></img>
         <PlayerPauseIcon sameRender={playPause} state={state} />
-        <i className="fa-sharp fa-solid fa-forward-step track-forward-icon"></i>
+        <img
+          src={ForwardStepIcon}
+          className="track-forward-icon"
+          alt="track-forward-icon"
+        ></img>
       </figure>
     </div>
   );

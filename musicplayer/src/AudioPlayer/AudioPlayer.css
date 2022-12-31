@@ -30,9 +30,14 @@ figure {
   color: #b0b0b0;
 } */
 .play-icon,
-.pause-icon,
+.pause-icon {
+  display: inline;
+  /* font-size: 35px; */
+  width: 28px;
+  height: 28px;
+}
 .track-back-icon,
 .track-forward-icon {
-  display: inline;
-  font-size: 35px;
+  width: 15px;
+  height: 25px;
 }

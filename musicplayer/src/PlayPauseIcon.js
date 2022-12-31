@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../src/AudioPlayer/AudioPlayer.css";
-
+import PlayIcon from "../src/Icons/Play.png";
+import PauseIcon from "../src/Icons/Pause.png";
 const PlayPauseIcon = ({ sameRender, state }) => {
   const [playing, setPlaying] = useState(state);
   const playPause = () => {
@@ -9,12 +10,22 @@ const PlayPauseIcon = ({ sameRender, state }) => {
 
   if (state === false) {
     return (
-      <i className="fa-solid fa-circle-play play-icon" onClick={playPause}></i>
+      <img
+        src={PlayIcon}
+        alt="playIcon"
+        className="play-icon"
+        onClick={playPause}
+      ></img>
     );
   } else {
     return (
       <div>
-        <i className="fa-solid fa-pause pause-icon" onClick={playPause}></i>
+        <img
+          src={PauseIcon}
+          className="pause-icon"
+          onClick={playPause}
+          alt="pause-icon"
+        ></img>
       </div>
     );
   }
