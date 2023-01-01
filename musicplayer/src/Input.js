@@ -1,6 +1,6 @@
 import React from "react";
 
-import "../src/Home/Home.css";
+import "../src/Libary/Libary.css";
 
 const Filter = ({ type, placeholder }) => {
   return (

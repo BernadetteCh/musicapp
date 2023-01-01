@@ -6,6 +6,10 @@ figure {
 .audioplayer-container {
   margin: 50px auto;
   max-width: 400px;
+
+  /* position: fixed;
+  width: 100%;
+  bottom: 15px; */
 }
 .track-back-icon,
 .track-forward-icon,
@@ -24,6 +28,8 @@ figure {
   background-clip: border-box;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  /* margin-left: 90px;
+  margin-right: 90px; */
 }
 /* .play-icon,
 .pause-icon {

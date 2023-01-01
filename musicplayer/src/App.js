@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
-import Home from "./Home/Home";
+import Libary from "./Libary/Libary";
+import Home from "./Home/Home.js";
 import Playlists from "./Playlists/Playlists";
 import Navigation from "./Navigation/Navigate";
 import FavoriteMusic from "./FavoriteMusic/FavoriteMusic";
@@ -29,9 +30,10 @@ function App() {
           </Col>
           <Col>
             <Routes>
+              <Route path="/" element={<Home />}></Route>
               <Route
-                path="/"
-                element={<Home sameRender={sameRender} state={playing} />}
+                path="/libary"
+                element={<Libary sameRender={sameRender} state={playing} />}
               ></Route>
               <Route
                 path="/favorites"

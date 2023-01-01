@@ -11,6 +11,9 @@ const Navigate = () => {
           <Link to="/">Home</Link>
         </li>
         <li>
+          <Link to="/libary">Libary</Link>
+        </li>
+        <li>
           <Link to="/addSong">Add a Song</Link>
         </li>
         <li>

@@ -1,7 +1,7 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
 import PlayPauseIcon from "../PlayPauseIcon";
-import "../Home/Home.css";
+import "../Libary/Libary.css";
 import UnfilledHeart from "../Icons/UnfilledHeart.png";
 import FilledHeart from "../Icons/Heartfilled.png";
 

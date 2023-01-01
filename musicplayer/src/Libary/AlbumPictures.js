@@ -1,5 +1,5 @@
 import React from "react";
-import "../Home/Home.css";
+import "../Libary/Libary.css";
 
 const AlbumPictures = () => {
   return (

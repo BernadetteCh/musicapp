@@ -1,24 +1,10 @@
 import React from "react";
-import AlbumPictures from "./AlbumPictures";
-import SearchForMusic from "../Input";
-import MusicTable from "./MusicTable";
+import "../Home/Home.css";
 
-import icon from "../images/searchicon.png";
-import "./Home.css";
-
-const Home = ({ sameRender, state }) => {
+const Home = () => {
   return (
-    <div className="mb-5">
-      {/* <h1 className="header" style={{ fontSize: "28px" }}>
-        Where words fail, music speaks. ...
-      </h1> */}
-      <AlbumPictures />
-      <SearchForMusic
-        type="text"
-        placeholder="What would you like to hear ? "
-      />
-      {/* <img src={icon} alt="search-icon" className="icon"></img> */}
-      <MusicTable sameRender={sameRender} state={state} />
+    <div>
+      <h1 className="header">Where words fail, music speaks. ...</h1>
     </div>
   );
 };

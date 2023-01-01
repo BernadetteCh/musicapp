@@ -1,6 +1,6 @@
 import React from "react";
 import Input from "../Input";
-import "../Home/Home.css";
+import "../Libary/Libary.css";
 
 const AddMusic = () => {
   return (
