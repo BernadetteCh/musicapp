@@ -6,7 +6,7 @@ const AddMusic = () => {
   return (
     <div style={{ marginLeft: "5%" }} className="mb-5">
       <form>
-        <Input type="text" placeholder="add mp3 file" />
+        <Input type="file" placeholder="add mp3 file" />
         <Input type="text" placeholder="Songtitle" />
         <Input type="text" placeholder="Artist" />
         <select style={{ background: "#d4a50d3d", color: "white" }}>
