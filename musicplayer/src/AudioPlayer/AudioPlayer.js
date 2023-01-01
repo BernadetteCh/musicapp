@@ -4,6 +4,7 @@ import BackwardStepIcon from "../Icons/Backward-step.png";
 import ForwardStepIcon from "../Icons/Forward-step.png";
 import "./AudioPlayer.css";
 import Kaleo from "../Kaleo - I walk on Water.mp3";
+import Queen from "../Bohemian - Rhapsody .mp3";
 
 const AudioPlayer = ({ sameRender, state }) => {
   const audioElem = useRef();
@@ -21,7 +22,7 @@ const AudioPlayer = ({ sameRender, state }) => {
   return (
     <div className="audioplayer-container">
       <figure>
-        <audio src={Kaleo} ref={audioElem}></audio>
+        <audio src={Queen} ref={audioElem}></audio>
         <img
           src={BackwardStepIcon}
           alt="backward-step-icon"

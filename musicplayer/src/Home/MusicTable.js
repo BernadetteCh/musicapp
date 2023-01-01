@@ -3,7 +3,7 @@ import Table from "react-bootstrap/Table";
 import PlayPauseIcon from "../PlayPauseIcon";
 import "../Home/Home.css";
 import UnfilledHeart from "../Icons/UnfilledHeart.png";
-import FilledHeart from "../Icons/HeartFilled.png";
+import FilledHeart from "../Icons/Heartfilled.png";
 
 const MusicTable = ({ sameRender, state }) => {
   const playPause = () => {
@@ -29,9 +29,35 @@ const MusicTable = ({ sameRender, state }) => {
             <td>I Walk On Water</td>
             <td>Kaleo</td>
             <td>
-              {/* <i className="fa-solid fa-heart favorite-song"></i> */}
-              <img src={UnfilledHeart} className="favorite-song"></img>
-              <img src={FilledHeart} className="favorite-song"></img>
+              <img
+                src={UnfilledHeart}
+                className="favorite-song"
+                alt="no-favorite-song"
+              ></img>
+              <img
+                src={FilledHeart}
+                className="favorite-song"
+                alt="favorite-song"
+              ></img>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <PlayPauseIcon sameRender={playPause} state={state} />
+            </td>
+            <td>Bohemian Rhapsody </td>
+            <td>Queen</td>
+            <td>
+              <img
+                src={UnfilledHeart}
+                className="favorite-song"
+                alt="no-favorite-song"
+              ></img>
+              <img
+                src={FilledHeart}
+                className="favorite-song"
+                alt="favorite-song"
+              ></img>
             </td>
           </tr>
         </tbody>
