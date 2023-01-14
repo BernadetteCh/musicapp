@@ -14,8 +14,6 @@ const AudioPlayer = ({ sameRender, state }) => {
     const getData = async () => {
       const response = await fetch("http://localhost:8080/api/");
       const data = await response.json();
-      console.log(data);
-      console.log(Kaleo);
       setMusic(data[0].title);
     };
     getData();
@@ -31,8 +29,7 @@ const AudioPlayer = ({ sameRender, state }) => {
   const playPause = () => {
     sameRender(state);
   };
-  console.log(music);
-  console.log(Queen);
+
   return (
     <div className="audioplayer-container">
       <figure>
@@ -41,7 +38,7 @@ const AudioPlayer = ({ sameRender, state }) => {
         ) : (
           <audio src={music} ref={audioElem}></audio>
         )} */}
-        <audio src={music} ref={audioElem}>
+        <audio src={Kaleo} ref={audioElem}>
           {/* <source src={music} type="audio/mp3" /> */}
         </audio>
         <img
