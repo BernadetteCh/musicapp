@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
 
 const musicSchema = new mongoose.Schema({
-  artist: String,
-  title: String,
+  title: "String",
+  artist: "String",
+  playlist: "String",
+  file: "String",
 });
 
 module.exports = mongoose.model("songs", musicSchema);
