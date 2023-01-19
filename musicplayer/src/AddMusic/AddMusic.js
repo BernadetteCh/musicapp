@@ -1,36 +1,42 @@
 import React, { useState } from "react";
-//import FormData from "form-data";
-
-import Input from "../Input";
 import "../Libary/Libary.css";
 
 const AddMusic = () => {
-  // const FormData = require("react-form-data");
-  const [file, setFile] = useState();
+  const [inputValue, setInputValue] = useState({
+    file: "",
+    title: "",
+    artist: "",
+    playlist: "",
+  });
 
   const uploadFile = (e) => {
-    setFile(e);
-    // setFile(value);
+    setInputValue((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.files[0],
+    }));
+  };
+  const saveInputValue = (e) => {
+    setInputValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const converBase64 = () => {
     return new Promise((resolve, reject) => {
       const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
+      fileReader.readAsDataURL(inputValue.file);
 
       fileReader.onload = () => {
         resolve(fileReader.result);
       };
-      // fileReader.onerror(() => {
-      //   reject(error);
-      // });
     });
   };
+
   const sendData = async (e) => {
     e.preventDefault();
     const base64 = await converBase64();
     //console.log(base64);
-
+    console.log(inputValue.artist);
+    console.log(inputValue.playlist);
+    console.log(inputValue.title);
     const response = await fetch("http://localhost:8080/api/newSong", {
       method: "POST",
       headers: {
@@ -38,29 +44,59 @@ const AddMusic = () => {
         accept: "*/*",
       },
 
-      body: JSON.stringify({ file: base64 }),
+      body: JSON.stringify({
+        file: base64,
+        title: inputValue.title,
+        artist: inputValue.artist,
+        playlist: inputValue.playlist,
+      }),
     });
+
     const data = await response.json();
     console.log(data);
+    if (!data.status) {
+      console.log(`${data.status}`);
+    } else {
+      setInputValue({ title: "", file: "", artist: "", playlist: "" });
+    }
   };
   return (
     // <div style={{ marginLeft: "5%" }} className="mb-5">
     <form>
-      <Input type="file" placeholder="add mp3 file" onChange={uploadFile} />
-      <Input type="text" placeholder="Songtitle" />
-      <Input type="text" placeholder="Artist" />
-      <select style={{ background: "#d4a50d3d", color: "white" }}>
+      <input
+        type="file"
+        name="file"
+        placeholder="add mp3 file"
+        onChange={uploadFile}
+      />
+      <input
+        type="text"
+        name="title"
+        placeholder="Songtitle"
+        onChange={saveInputValue}
+      />
+      <input
+        type="text"
+        placeholder="Artist"
+        name="artist"
+        onChange={saveInputValue}
+      />
+      <select
+        style={{ background: "#d4a50d3d", color: "white" }}
+        name="playlist"
+        onChange={saveInputValue}
+      >
         <option defaultValue="select" placeholder="select">
           -- Select Playlist --
         </option>
-        <option>Jazz</option>
-        <option>Rock'n&Roll</option>
-        <option>Classic</option>
-        <option>Focus</option>
-        <option>HipHop</option>
-        <option>AustroPop</option>
-        <option>90s</option>
-        <option>Around The World</option>
+        <option value="Jazz">Jazz</option>
+        <option value="Rock'n&Roll">Rock'n&Roll</option>
+        <option vlaue="Classic">Classic</option>
+        <option value="Focus">Focus</option>
+        <option value="HipHop">HipHop</option>
+        <option value="AustroPoP">AustroPop</option>
+        <option value="90s">90s</option>
+        <option value="Around The World">Around The World</option>
       </select>
       <button onClick={sendData}> Add to libary</button>
     </form>
