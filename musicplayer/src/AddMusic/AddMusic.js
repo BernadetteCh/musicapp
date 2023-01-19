@@ -43,7 +43,6 @@ const AddMusic = () => {
         "Content-Type": "application/json",
         accept: "*/*",
       },
-
       body: JSON.stringify({
         file: base64,
         title: inputValue.title,
@@ -51,15 +50,12 @@ const AddMusic = () => {
         playlist: inputValue.playlist,
       }),
     });
-
     const data = await response.json();
     console.log(data);
-    if (!data.status) {
-      console.log(`${data.status}`);
-    } else {
-      setInputValue({ title: "", file: "", artist: "", playlist: "" });
-    }
+
+    setInputValue({ title: "", file: "", artist: "", playlist: "" });
   };
+
   return (
     // <div style={{ marginLeft: "5%" }} className="mb-5">
     <form>
