@@ -22,9 +22,18 @@ router.get("/", async (req, res) => {
 //   }
 // );
 
-router.post("/newSong", (req, res) => {
-  console.log(req.body);
-  console.log(req.files);
-  res.json({ status: "OK" });
+router.post("/newSong", async (req, res) => {
+  let newMusic = new Music({
+    title: req.body.title,
+    artist: req.body.artist,
+    playlist: req.body.playlist,
+    file: req.body.file,
+  });
+  try {
+    await newMusic.save();
+    res.json({ status: "OK" });
+  } catch (e) {
+    res.json({ error: e });
+  }
 });
 module.exports = router;
