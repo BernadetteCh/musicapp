@@ -4,7 +4,7 @@ const fileUpload = require("express-fileupload");
 const Music = require("../Schemas/MusicSchema");
 
 router.get("/", async (req, res) => {
-  res.setHeader("Content-Type", "audio/mpeg");
+  //res.setHeader("Content-Type", "audio/mpeg");
   const data = await Music.find({ title: { $exists: true } });
   res.send(data);
 });
