@@ -1,14 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
+
 import PlayPauseIcon from "../PlayPauseIcon";
 import "../Libary/Libary.css";
+import MusicTableRow from "./MusicTableRow";
 import UnfilledHeart from "../Icons/UnfilledHeart.png";
 import FilledHeart from "../Icons/Heartfilled.png";
 
+const fetchMusic = async (dataSetter) => {
+  const response = await fetch("http://localhost:8080/api/");
+  const data = await response.json();
+  console.log(data);
+  dataSetter(data);
+};
+
 const MusicTable = ({ sameRender, state }) => {
+  const [music, setMusic] = useState();
+
   const playPause = () => {
     sameRender(state);
   };
+
+  useEffect(() => {
+    fetchMusic(setMusic);
+  }, []);
 
   return (
     <div className="music-table" style={{ marginTop: "80px" }}>
@@ -18,11 +33,25 @@ const MusicTable = ({ sameRender, state }) => {
             <th></th>
             <th>Title</th>
             <th>Artist</th>
-            <th></th>
+            <th>FavoriteIcon</th>
+            <th>NotFavoriteIcon</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
+          {music === undefined
+            ? console.log("...loadig")
+            : music.map((data, index) => {
+                return (
+                  <MusicTableRow
+                    title={data.title}
+                    artist={data.artist}
+                    favoriteSong={"💜"}
+                    sameRender={playPause}
+                    state={state}
+                  />
+                );
+              })}
+          {/* <tr>
             <td>
               <PlayPauseIcon sameRender={playPause} state={state} />
             </td>
@@ -59,7 +88,7 @@ const MusicTable = ({ sameRender, state }) => {
                 alt="favorite-song"
               ></img>
             </td>
-          </tr>
+          </tr> */}
         </tbody>
       </Table>
     </div>

@@ -1,20 +1,31 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Base64 } from "js-base64";
 import PlayerPauseIcon from "../PlayPauseIcon";
 import BackwardStepIcon from "../Icons/Backward-step.png";
 import ForwardStepIcon from "../Icons/Forward-step.png";
 import "./AudioPlayer.css";
-import Kaleo from "../Kaleo - I walk on Water.mp3";
-import Queen from "../Bohemian - Rhapsody .mp3";
+
+const decodeString = async (data, dataSetter) => {
+  const byteCharacters = new Blob([Base64.toUint8Array(data)], {
+    type: "audio/mpeg",
+  });
+  console.log(byteCharacters);
+  dataSetter(URL.createObjectURL(byteCharacters));
+};
 
 const AudioPlayer = ({ sameRender, state }) => {
   const [music, setMusic] = useState();
+  const [link, setLinik] = useState("");
   const audioElem = useRef();
 
   useEffect(() => {
     const getData = async () => {
       const response = await fetch("http://localhost:8080/api/");
       const data = await response.json();
-      setMusic(data[0].title);
+      await decodeString(data[0].file, setMusic);
+      console.log(data[0].file);
+      //setMusic(data[0].title);
+      setMusic(data[0].file);
     };
     getData();
   }, []);
@@ -38,7 +49,7 @@ const AudioPlayer = ({ sameRender, state }) => {
         ) : (
           <audio src={music} ref={audioElem}></audio>
         )} */}
-        <audio src={Kaleo} ref={audioElem}>
+        <audio src={""} ref={audioElem}>
           {/* <source src={music} type="audio/mp3" /> */}
         </audio>
         <img

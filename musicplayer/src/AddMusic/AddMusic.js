@@ -33,7 +33,7 @@ const AddMusic = () => {
   const sendData = async (e) => {
     e.preventDefault();
     const base64 = await converBase64();
-    //console.log(base64);
+    console.log(base64);
     console.log(inputValue.artist);
     console.log(inputValue.playlist);
     console.log(inputValue.title);

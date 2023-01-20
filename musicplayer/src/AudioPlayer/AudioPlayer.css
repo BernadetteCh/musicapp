@@ -35,11 +35,16 @@ figure {
 .pause-icon {
   color: #b0b0b0;
 } */
-.play-icon,
-.pause-icon {
+.play-icon {
   display: inline;
   /* font-size: 35px; */
   width: 28px;
+  height: 28px;
+}
+.pause-icon {
+  display: inline;
+  /* font-size: 35px; */
+  width: 20px;
   height: 28px;
 }
 .track-back-icon,
