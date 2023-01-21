@@ -19,6 +19,7 @@ function App() {
   const [songId, setSongId] = useState("");
 
   const playPauseSong = (boolean) => {
+    console.log(boolean);
     // setPlaying((playing) => !playing);
     setPlaying(boolean);
   };
@@ -58,7 +59,6 @@ function App() {
         <AudioPlayer
           sameRender={playPauseSong}
           playorpause={playing}
-          state={playing}
           songId={songId}
         />
       </Container>
