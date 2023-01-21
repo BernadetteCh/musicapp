@@ -14,11 +14,15 @@ const fetchMusic = async (dataSetter) => {
   dataSetter(data);
 };
 
-const MusicTable = ({ sameRender, state }) => {
+const MusicTable = ({ sameRender, state, playSong }) => {
   const [music, setMusic] = useState();
 
-  const playPause = () => {
-    sameRender(state);
+  const playPause = (boolean) => {
+    // sameRender(state);
+    sameRender(boolean);
+  };
+  const playPauseSong = (id) => {
+    playSong(id);
   };
 
   useEffect(() => {
@@ -40,14 +44,19 @@ const MusicTable = ({ sameRender, state }) => {
         <tbody>
           {music === undefined
             ? console.log("...loadig")
-            : music.map((data, index) => {
+            : music.map((data, key) => {
                 return (
                   <MusicTableRow
+                    key={key}
+                    index={key}
+                    id={data._id}
                     title={data.title}
                     artist={data.artist}
                     favoriteSong={"💜"}
+                    file={data.file}
                     sameRender={playPause}
                     state={state}
+                    playSong={playPauseSong}
                   />
                 );
               })}
