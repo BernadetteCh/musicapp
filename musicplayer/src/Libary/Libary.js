@@ -11,7 +11,6 @@ const Libary = ({ sameRender, state, playSong }) => {
     playSong(id);
   };
   const playPauseSong = (boolean) => {
-    console.log(boolean);
     sameRender(boolean);
   };
   return (
