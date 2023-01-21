@@ -15,10 +15,15 @@ import AudioPlayer from "./AudioPlayer/AudioPlayer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
-  const [playing, setPlaying] = useState(false);
+  const [playing, setPlaying] = useState();
+  const [songId, setSongId] = useState("");
 
-  const sameRender = () => {
-    setPlaying((playing) => !playing);
+  const playPauseSong = (boolean) => {
+    // setPlaying((playing) => !playing);
+    setPlaying(boolean);
+  };
+  const playSongId = (id) => {
+    setSongId(id);
   };
 
   return (
@@ -33,20 +38,29 @@ function App() {
               <Route path="/" element={<Home />}></Route>
               <Route
                 path="/libary"
-                element={<Libary sameRender={sameRender} state={playing} />}
+                element={
+                  <Libary
+                    sameRender={playPauseSong}
+                    state={playing}
+                    playSong={playSongId}
+                  />
+                }
               ></Route>
               <Route
                 path="/favorites"
-                element={
-                  <FavoriteMusic sameRender={sameRender} state={playing} />
-                }
+                element={<FavoriteMusic sameRender={""} state={playing} />}
               ></Route>
               <Route path="/playlists" element={<Playlists />}></Route>
               <Route path="/addSong" element={<AddMusic />}></Route>
             </Routes>
           </Col>
         </Row>
-        <AudioPlayer sameRender={sameRender} state={playing} />
+        <AudioPlayer
+          sameRender={playPauseSong}
+          playorpause={playing}
+          state={playing}
+          songId={songId}
+        />
       </Container>
     </BrowserRouter>
   );
