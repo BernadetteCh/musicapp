@@ -18,7 +18,6 @@ const MusicTable = ({ sameRender, state, playSong }) => {
   const [music, setMusic] = useState();
 
   const playPause = (boolean) => {
-    // sameRender(state);
     sameRender(boolean);
   };
   const playPauseSong = (id) => {
