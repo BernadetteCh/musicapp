@@ -1,63 +1,77 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Base64 } from "js-base64";
+// import { Base64 } from "js-base64";
 import PlayerPauseIcon from "../PlayPauseIcon";
 import BackwardStepIcon from "../Icons/Backward-step.png";
 import ForwardStepIcon from "../Icons/Forward-step.png";
 import "./AudioPlayer.css";
 
-const decodeString = async (data, dataSetter) => {
-  const byteCharacters = new Blob([Base64.toUint8Array(data)], {
-    type: "audio/mpeg",
-  });
-  console.log(byteCharacters);
-  dataSetter(URL.createObjectURL(byteCharacters));
+const getData = async (songId, dataSetter) => {
+  const response = await fetch(`http://localhost:8080/api/${songId}`);
+  const data = await response.json();
+  dataSetter(data.song.file);
 };
+const AudioPlayer = ({ sameRender, state, songId }) => {
+  console.log(songId);
 
-const AudioPlayer = ({ sameRender, state }) => {
-  const [music, setMusic] = useState();
-  const [link, setLinik] = useState("");
+  const [music, setMusic] = useState("");
+
+  //const audioElem = useRef();
   const audioElem = useRef();
+  const songElem = useRef(new Audio(music));
+
+  // useEffect(() => {
+  //   console.log("fetchmusic");
+  //   const getData = async () => {
+  //     const response = await fetch(`http://localhost:8080/api/${songId}`);
+  //     const data = await response.json();
+  //     setMusic(data.song.file);
+  //   };
+
+  //   getData();
+  // }, [songId]);
 
   useEffect(() => {
+    console.log(state);
+    console.log(music);
     const getData = async () => {
-      const response = await fetch("http://localhost:8080/api/");
+      const response = await fetch(`http://localhost:8080/api/${songId}`);
       const data = await response.json();
-      await decodeString(data[0].file, setMusic);
-      console.log(data[0].file);
-      //setMusic(data[0].title);
-      setMusic(data[0].file);
+      setMusic(data.song.file);
+      audioElem.current.play();
     };
-    getData();
-  }, []);
 
-  useEffect(() => {
     if (state) {
+      console.log(music);
+      //getData();
       audioElem.current.play();
     } else {
       audioElem.current.pause();
     }
-  }, [state]);
-  const playPause = () => {
+  }, [state, songId]);
+
+  if (state == true && music !== "") {
+    audioElem.current.play();
+  }
+
+  const playPause = (boolean) => {
+    // console.log(state);
+    //sameRender(state);
+
+    console.log(state);
     sameRender(state);
   };
+  //playPause();
 
   return (
     <div className="audioplayer-container">
       <figure>
-        {/* {music === undefined ? (
-          console.log("no music")
-        ) : (
-          <audio src={music} ref={audioElem}></audio>
-        )} */}
-        <audio src={""} ref={audioElem}>
-          {/* <source src={music} type="audio/mp3" /> */}
-        </audio>
+        <audio src={music} ref={audioElem}></audio>
         <img
           src={BackwardStepIcon}
           alt="backward-step-icon"
           className="track-back-icon"
         ></img>
-        <PlayerPauseIcon sameRender={playPause} state={state} />
+        {/* <PlayerPauseIcon sameRender={playPause} state={playorpause} /> */}
         <img
           src={ForwardStepIcon}
           className="track-forward-icon"
