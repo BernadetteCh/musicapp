@@ -18,6 +18,16 @@ const AudioPlayer = ({ sameRender, playorpause, songId }) => {
   const [playSong, setPlaySong] = useState();
   const audioElem = useRef();
 
+  // useEffect(() => {
+  // //   if (songId == undefined) {
+  // //     console.log("no id ");
+  // //   }
+  // //   if (songId !== undefined && playSong == true) {
+  // //     setMusic("");
+  // //     audioElem.pause();
+  // //     audioElem.currentTime = 0;
+  // //   }
+  // // }, [songId]);
   useEffect(() => {
     if (playorpause == true && music !== "") {
       audioElem.current.play();
