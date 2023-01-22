@@ -19,16 +19,31 @@ const AudioPlayer = ({ sameRender, playorpause, songId }) => {
   const audioElem = useRef();
 
   useEffect(() => {
-    getData(songId, setMusic);
-  }, [songId]);
+    if (playorpause == true && music !== "") {
+      audioElem.current.play();
+    }
+    if (playorpause === false) {
+      audioElem.current.pause();
+    }
+  }, [playorpause, music]);
+
+  useEffect(() => {
+    if (songId == undefined || playorpause == undefined) {
+      console.log("no id yet");
+    } else {
+      getData(songId, setMusic);
+    }
+  }, [songId, playorpause]);
 
   const playPause = (boolean) => {
     sameRender(boolean);
   };
-  // playPause();
-  console.log(playorpause);
+
   return (
     <div className="audioplayer-container">
+      <figure>
+        <audio src={music} ref={audioElem}></audio>
+      </figure>
       <img
         src={BackwardStepIcon}
         alt="backward-step-icon"

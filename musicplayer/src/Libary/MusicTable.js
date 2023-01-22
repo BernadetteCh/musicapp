@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
-
+import AudioPlayer from "../AudioPlayer/AudioPlayer";
 import PlayPauseIcon from "../PlayPauseIcon";
 import "../Libary/Libary.css";
 import MusicTableRow from "./MusicTableRow";
@@ -16,12 +16,14 @@ const fetchMusic = async (dataSetter) => {
 
 const MusicTable = ({ sameRender, state, playSong }) => {
   const [music, setMusic] = useState();
+  const [boolean, setBoolean] = useState();
+  const [id, setId] = useState();
 
   const playPause = (boolean) => {
-    sameRender(boolean);
+    setBoolean(boolean, sameRender(boolean));
   };
   const playPauseSong = (id) => {
-    playSong(id);
+    setId(id, playSong(id));
   };
 
   useEffect(() => {
@@ -54,6 +56,7 @@ const MusicTable = ({ sameRender, state, playSong }) => {
                     favoriteSong={"💜"}
                     file={data.file}
                     sameRender={playPause}
+                    myKey={data._id}
                     state={state}
                     playSong={playPauseSong}
                   />
@@ -99,6 +102,9 @@ const MusicTable = ({ sameRender, state, playSong }) => {
           </tr> */}
         </tbody>
       </Table>
+      {/* <div>
+        <AudioPlayer sameRender={playPause} playorpause={boolean} songId={id} />
+      </div> */}
     </div>
   );
 };
