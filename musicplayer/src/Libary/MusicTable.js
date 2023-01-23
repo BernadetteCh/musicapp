@@ -10,12 +10,13 @@ import FilledHeart from "../Icons/Heartfilled.png";
 const fetchMusic = async (dataSetter) => {
   const response = await fetch("http://localhost:8080/api/");
   const data = await response.json();
-  console.log(data);
-  dataSetter(data);
+  return data;
+  //dataSetter(data);
 };
 
 const MusicTable = ({ sameRender, state, playSong }) => {
   const [music, setMusic] = useState();
+  const [musicList, setMusicList] = useState();
   const [boolean, setBoolean] = useState();
   const [id, setId] = useState();
 
@@ -27,9 +28,17 @@ const MusicTable = ({ sameRender, state, playSong }) => {
   };
 
   useEffect(() => {
-    fetchMusic(setMusic);
-  }, []);
+    const getData = async () => {
+      const m = await fetchMusic(setMusic);
+      const newMusicList = [...m];
+      console.log(newMusicList);
+      await setMusicList(newMusicList);
+    };
 
+    getData();
+  }, []);
+  console.log(music);
+  console.log(musicList);
   return (
     <div className="music-table" style={{ marginTop: "80px" }}>
       <Table style={{ color: "white" }}>
@@ -43,9 +52,9 @@ const MusicTable = ({ sameRender, state, playSong }) => {
           </tr>
         </thead>
         <tbody>
-          {music === undefined
+          {musicList === undefined
             ? console.log("...loadig")
-            : music.map((data, key) => {
+            : musicList.map((data, key) => {
                 return (
                   <MusicTableRow
                     key={key}
