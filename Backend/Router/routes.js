@@ -24,10 +24,26 @@ router.post("/newSong", async (req, res) => {
 });
 
 router.get("/:songId", async (req, res) => {
-  console.log("Hi");
   const song = await Music.findById(req.params.songId);
   res.status(200).json({ song });
-  //res.status(200).json({ song });
+});
+
+router.get("/previous/:songId", async (req, res) => {
+  const previousTrack = await Music.find({ _id: { $lt: req.params.songId } })
+    .sort({ _id: -1 })
+    .limit(1);
+  //console.log(previousTrack); []
+  res.status(200).json({ previousTrack });
+});
+
+router.get("/next/:songId", async (req, res) => {
+  console.log("Next");
+  const nextTrack = await Music.find({ _id: { $gt: req.params.songId } })
+    .sort({
+      _id: 1,
+    })
+    .limit(1);
+  res.status(200).json({ nextTrack });
 });
 
 module.exports = router;
