@@ -28,6 +28,7 @@ const AudioPlayer = ({ sameRender, playorpause, songId }) => {
   // //     audioElem.currentTime = 0;
   // //   }
   // // }, [songId]);
+
   useEffect(() => {
     if (playorpause == true && music !== "") {
       audioElem.current.play();
@@ -49,24 +50,32 @@ const AudioPlayer = ({ sameRender, playorpause, songId }) => {
     sameRender(boolean);
   };
 
-  return (
-    <div className="audioplayer-container">
-      <figure>
-        <audio src={music} ref={audioElem}></audio>
-      </figure>
-      <img
-        src={BackwardStepIcon}
-        alt="backward-step-icon"
-        className="track-back-icon"
-      ></img>
-      <PlayerPauseIcon sameRender={playPause} state={playorpause} />
-      <img
-        src={ForwardStepIcon}
-        className="track-forward-icon"
-        alt="track-forward-icon"
-      ></img>
-    </div>
-  );
+  if (playorpause === undefined) {
+    return (
+      <div style={{ color: "white" }}>
+        No music selected ,//nothing in localstorage yet?
+      </div>
+    );
+  } else {
+    return (
+      <div className="audioplayer-container">
+        <figure>
+          <audio src={music} ref={audioElem}></audio>
+        </figure>
+        <img
+          src={BackwardStepIcon}
+          alt="backward-step-icon"
+          className="track-back-icon"
+        ></img>
+        <PlayerPauseIcon sameRender={playPause} state={playorpause} />
+        <img
+          src={ForwardStepIcon}
+          className="track-forward-icon"
+          alt="track-forward-icon"
+        ></img>
+      </div>
+    );
+  }
 };
 
 export default AudioPlayer;
