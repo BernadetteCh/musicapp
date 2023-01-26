@@ -10,11 +10,10 @@ const getData = async (songId, dataSetter) => {
   dataSetter(data.song.file);
 };
 const AudioPlayer = ({ sameRender, playorpause, songId }) => {
-  console.log(songId);
-  console.log(playorpause);
-
   const [music, setMusic] = useState("");
   const [playSong, setPlaySong] = useState();
+  const [nextSongId, setNextSongId] = useState("");
+  const [previousSongId, setPreviousSongId] = useState("");
   const audioElem = useRef();
 
   useEffect(() => {
@@ -40,6 +39,71 @@ const AudioPlayer = ({ sameRender, playorpause, songId }) => {
   const playPause = (boolean) => {
     sameRender(boolean);
   };
+  const fetchpreviousSong = async () => {
+    if (previousSongId === "") {
+      const response = await fetch(
+        `http://localhost:8080/api/previous/${songId}`
+      );
+      const data = await response.json();
+      if (response.status === 200) {
+        audioElem.current.pause();
+        audioElem.current = new Audio(data.previousTrack[0].file);
+        setMusic(
+          data.previousTrack[0].file,
+          setPreviousSongId(data.previousTrack[0]._id)
+        );
+      } else {
+        console.log("No previous song");
+      }
+    } else {
+      const response = await fetch(
+        `http://localhost:8080/api/previous/${previousSongId}`
+      );
+      const data = await response.json();
+      if (response.status === 200) {
+        audioElem.current.pause();
+        audioElem.current = new Audio(data.previousTrack[0].file);
+        setPreviousSongId(
+          data.previousTrack[0]._id,
+          getData(data.previousTrack[0]._id, setMusic)
+        );
+      } else {
+        console.log("No previous track");
+      }
+    }
+  };
+
+  const fetchNextSong = async () => {
+    if (previousSongId === "") {
+      const response = await fetch(`http://localhost:8080/api/next/${songId}`);
+      const data = await response.json();
+      if (response.status === 200) {
+        audioElem.current.pause();
+        audioElem.current = new Audio(data.nextTrack[0].file);
+        setMusic(
+          data.nextTrack[0].file,
+          setPreviousSongId(data.nextTrack[0]._id)
+        );
+      } else {
+        console.log("No next track");
+      }
+    } else {
+      const response = await fetch(
+        `http://localhost:8080/api/next/${previousSongId}`
+      );
+      const data = await response.json();
+      if (response.status == 200) {
+        audioElem.current.pause();
+        audioElem.current = new Audio(data.nextTrack[0].file);
+        setPreviousSongId(
+          data.nextTrack[0]._id,
+          getData(data.nextTrack[0]._id, setMusic)
+        );
+      } else {
+        console.log("No next song");
+      }
+    }
+  };
 
   if (playorpause === undefined) {
     return (
@@ -57,12 +121,14 @@ const AudioPlayer = ({ sameRender, playorpause, songId }) => {
           src={BackwardStepIcon}
           alt="backward-step-icon"
           className="track-back-icon"
+          onClick={fetchpreviousSong}
         ></img>
         <PlayerPauseIcon sameRender={playPause} state={playorpause} />
         <img
           src={ForwardStepIcon}
           className="track-forward-icon"
           alt="track-forward-icon"
+          onClick={fetchNextSong}
         ></img>
       </div>
     );
