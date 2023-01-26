@@ -47,8 +47,8 @@ const MusicTable = ({ sameRender, state, playSong }) => {
             <th></th>
             <th>Title</th>
             <th>Artist</th>
-            <th>FavoriteIcon</th>
-            <th>NotFavoriteIcon</th>
+            <th>Icon for favorite</th>
+            <th>Icon for delete</th>
           </tr>
         </thead>
         <tbody>
