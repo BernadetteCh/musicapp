@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-// import { Base64 } from "js-base64";
 import PlayerPauseIcon from "../PlayPauseIcon";
 import BackwardStepIcon from "../Icons/Backward-step.png";
 import ForwardStepIcon from "../Icons/Forward-step.png";
@@ -18,32 +17,24 @@ const AudioPlayer = ({ sameRender, playorpause, songId }) => {
   const [playSong, setPlaySong] = useState();
   const audioElem = useRef();
 
-  // useEffect(() => {
-  // //   if (songId == undefined) {
-  // //     console.log("no id ");
-  // //   }
-  // //   if (songId !== undefined && playSong == true) {
-  // //     setMusic("");
-  // //     audioElem.pause();
-  // //     audioElem.currentTime = 0;
-  // //   }
-  // // }, [songId]);
-
   useEffect(() => {
     if (playorpause == true && music !== "") {
       audioElem.current.play();
     }
-    if (playorpause === false) {
+    if (playorpause == false) {
       audioElem.current.pause();
     }
   }, [playorpause, music]);
 
   useEffect(() => {
-    if (songId == undefined || playorpause == undefined) {
-      console.log("no id yet");
-    } else {
-      getData(songId, setMusic);
-    }
+    const fetchMusic = async () => {
+      if (songId == undefined || playorpause == undefined) {
+        console.log("no id yet");
+      } else {
+        await getData(songId, setMusic);
+      }
+    };
+    fetchMusic();
   }, [songId, playorpause]);
 
   const playPause = (boolean) => {
