@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Base64 } from "js-base64";
 import "../Libary/Libary.css";
 
 const AddMusic = () => {
@@ -30,6 +31,14 @@ const AddMusic = () => {
     });
   };
 
+  const clearLocalStorage = () => {
+    const items = JSON.parse(window.localStorage.getItem("icon"));
+    if (items) {
+      window.localStorage.clear();
+    } else {
+      console.log("Nothing in localStorage");
+    }
+  };
   const sendData = async (e) => {
     e.preventDefault();
     const base64 = await converBase64();
@@ -53,6 +62,8 @@ const AddMusic = () => {
     const data = await response.json();
     console.log(data);
 
+    await clearLocalStorage();
+
     setInputValue({ title: "", file: "", artist: "", playlist: "" });
   };
 
@@ -68,12 +79,14 @@ const AddMusic = () => {
       <input
         type="text"
         name="title"
+        value={inputValue.title}
         placeholder="Songtitle"
         onChange={saveInputValue}
       />
       <input
         type="text"
         placeholder="Artist"
+        value={inputValue.artist}
         name="artist"
         onChange={saveInputValue}
       />
