@@ -11,6 +11,7 @@ import HipHopCover from "./hip-hop-playlist.jpg";
 import AustroPopCover from "./austro-pop-playlist.jpg";
 import NinetiesCover from "./90s-playlist.jpg";
 import MusicAroundTheWorld from "./music-around-the-world.jpg";
+import FavoriteSongs from "./favoriteSongs.jpg";
 
 const Playlist = () => {
   return (
@@ -61,6 +62,14 @@ const Playlist = () => {
               src={NinetiesCover}
               alt="90s-music-cover"
               title="Hit-me-baby-one-more-time"
+              style={{ height: "180px" }}
+            ></img>
+          </Col>
+          <Col>
+            <img
+              src={FavoriteSongs}
+              alt="favoriteSongs"
+              title="My favorite Songs"
               style={{ height: "180px" }}
             ></img>
           </Col>
