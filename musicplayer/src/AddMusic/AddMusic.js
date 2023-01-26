@@ -91,7 +91,7 @@ const AddMusic = () => {
         onChange={saveInputValue}
       />
       <select
-        style={{ background: "#d4a50d3d", color: "white" }}
+        // style={{ background: "#d4a50d3d", color: "white" }}
         name="playlist"
         onChange={saveInputValue}
       >
