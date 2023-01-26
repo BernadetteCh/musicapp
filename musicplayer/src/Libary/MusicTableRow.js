@@ -28,23 +28,12 @@ const MusicTableRow = ({
   }, [audioIcon]);
 
   useEffect(() => {
-    // if (audioIcon[0].audioIcon === "no music yet") {
-    //   console.log("Hi dfg from if statement");
-    // } else {
-    //   console.log("parse Data from localStorage");
-    //   let localStorageData = JSON.parse(window.localStorage.getItem("icon"));
-    //   console.log(audioIcon);
-    //   setAudioIcon(localStorageData);
-    //   console.log(localStorageData);
-    // }
     const items = JSON.parse(window.localStorage.getItem("icon"));
     if (items) {
-      console.log(items);
       setAudioIcon(items);
-    } else {
-      console.log(items);
     }
   }, []);
+
   const playMusic = (boolean) => {
     sameRender(boolean, playSong(id));
   };
@@ -76,13 +65,14 @@ const MusicTableRow = ({
         </td>
       </tr>
     );
-  } //I drück auf play und spiel einen song sag das was gespielt wird zeig als pause icon an das anderes als pause icon
+  }
+  //I drück auf play und spiel einen song sag das was gespielt wird zeig als pause icon an das anderes als pause icon
   else if (audioIcon[0].index == index && state == true) {
     console.log("SECOND CONDITION");
     return (
       <tr>
         <td>
-          {audioIcon[0].audioIcon == true ? (
+          {audioIcon[0].audioIcon == true && audioIcon[0].id === id ? (
             <img
               src={PauseIcon}
               className="play-icon"
@@ -116,6 +106,7 @@ const MusicTableRow = ({
     );
   } //wenn nix gespielt wird und inzwischen druch die pages gerootet wird
   else if (state == false && audioIcon[0].audioIcon == false) {
+    console.log("THIRD CONDITION");
     return (
       <tr>
         <td>
@@ -155,7 +146,7 @@ const MusicTableRow = ({
 
   //i dück jz auf pause icon und es san beide als play angezeigt
   else if (audioIcon[0].index == index && state == false) {
-    console.log("THIRD CONDITION");
+    console.log("FOURTH CONDITION");
     return (
       <tr>
         <td>
@@ -180,6 +171,7 @@ const MusicTableRow = ({
     );
     // ist wenn grad music gespielt wird und i die page verlasse und dann wieder kommme dass das eine icon auf pause is weil geraede geplayid wird und das andere auf play ist
   } else if (audioIcon[0].audioIcon == true) {
+    console.log("FIFTH CONDITION");
     return (
       <tr>
         <td>
@@ -203,6 +195,7 @@ const MusicTableRow = ({
       </tr>
     );
   } else if (state == undefined && audioIcon[0].audioIcon == false) {
+    console.log("SIXTH CONDITION");
     return (
       <tr>
         <td>
@@ -226,95 +219,5 @@ const MusicTableRow = ({
       </tr>
     );
   }
-
-  // if (state == true && audioIcon[0].id == id) {
-  //   console.log("FIRST condition");
-  //   return (
-  //     <tr>
-  //       <td>
-  //         {audioIcon[0].id == id && audioIcon[0].audioIcon == "no music yet" ? (
-  //           <img
-  //             src={PlayIcon}
-  //             className="play-icon"
-  //             onClick={() => {
-  //               setAudioIcon(
-  //                 [{ audioIcon: true, id: id, index: index }],
-  //                 playMusic(true)
-  //               );
-  //             }}
-  //           ></img>
-  //         ) : (
-  //           <img
-  //             src={PauseIcon}
-  //             className="play-icon"
-  //             onClick={() => {
-  //               setAudioIcon(
-  //                 [{ audioIcon: false, id: id, index: index }],
-  //                 playMusic(false)
-  //               );
-  //             }}
-  //           ></img>
-  //         )}
-  //       </td>
-  //       <td>{title}</td>
-  //       <td>{artist}</td>
-  //       <td>{favoriteSong}</td>
-  //       <td>
-  //         <div>Remove from libary</div>
-  //       </td>
-  //     </tr>
-  //   );
-  // } else if (state == false && audioIcon[0].id == id) {
-  //   console.log("SECOND CONDITION");
-  //   return (
-  //     <tr>
-  //       <td>
-  //         {audioIcon[0].id == id ? (
-  //           <img
-  //             src={PlayIcon}
-  //             className="play-icon"
-  //             onClick={() => {
-  //               setAudioIcon(
-  //                 [{ audioIcon: true, id: id, index: index }],
-  //                 playMusic(true)
-  //               );
-  //             }}
-  //           ></img>
-  //         ) : (
-  //           <div>Superhero</div>
-  //         )}
-  //       </td>
-  //       <td>{title}</td>
-  //       <td>{artist}</td>
-  //       <td>{favoriteSong}</td>
-  //       <td>
-  //         <div>Remove from libary</div>
-  //       </td>
-  //     </tr>
-  //   );
-  // } else {
-  //   return (
-  //     <tr>
-  //       <td>
-  //         <img
-  //           src={PlayIcon}
-  //           className="play-icon"
-  //           onClick={() => {
-  //             setAudioIcon(
-  //               [{ audioIcon: true, id: id, index: index }],
-  //               playMusic(true)
-  //             );
-  //           }}
-  //         ></img>
-  //       </td>
-  //       <td>{title}</td>
-  //       <td>{artist}</td>
-  //       <td>{favoriteSong}</td>
-  //       <td>
-  //         <div>Remove from libary</div>
-  //       </td>
-  //     </tr>
-  //   );
-  // }
 };
 export default MusicTableRow;
