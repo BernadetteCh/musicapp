@@ -4,16 +4,95 @@ import BackwardStepIcon from "../Icons/Backward-step.png";
 import ForwardStepIcon from "../Icons/Forward-step.png";
 import "./AudioPlayer.css";
 
+const fetchNextTrackWithNewSongId = async (
+  audioElem,
+  previousOrNextSongId,
+  setPreviousOrNextSongId,
+  setMusic
+) => {
+  const response = await fetch(
+    `http://localhost:8080/api/next/${previousOrNextSongId}`
+  );
+  const data = await response.json();
+  if (response.status == 200) {
+    audioElem.current.pause();
+    audioElem.current = new Audio(data.nextTrack[0].file);
+    setPreviousOrNextSongId(
+      data.nextTrack[0]._id,
+      getData(data.nextTrack[0]._id, setMusic)
+    );
+  } else {
+    console.log("No next song");
+  }
+};
+const fetchNextTrack = async (
+  audioElem,
+  setMusic,
+  songId,
+  setPreviousOrNextSongId
+) => {
+  const response = await fetch(`http://localhost:8080/api/next/${songId}`);
+  const data = await response.json();
+  if (response.status === 200) {
+    audioElem.current.pause();
+    audioElem.current = new Audio(data.nextTrack[0].file);
+    setMusic(
+      data.nextTrack[0].file,
+      setPreviousOrNextSongId(data.nextTrack[0]._id)
+    );
+  } else {
+    console.log("No next track");
+  }
+};
+const fetchPreviousTrackWithNewSongId = async (
+  audioElem,
+  previousOrNextSongId,
+  setPreviousOrNextSongId,
+  setMusic
+) => {
+  const response = await fetch(
+    `http://localhost:8080/api/previous/${previousOrNextSongId}`
+  );
+  const data = await response.json();
+  if (response.status === 200) {
+    audioElem.current.pause();
+    audioElem.current = new Audio(data.previousTrack[0].file);
+    setPreviousOrNextSongId(
+      data.previousTrack[0]._id,
+      getData(data.previousTrack[0]._id, setMusic)
+    );
+  } else {
+    console.log("No previous track");
+  }
+};
+const fetchPreviousTrack = async (
+  audioElem,
+  songId,
+  setMusic,
+  setPreviousOrNextSongId
+) => {
+  const response = await fetch(`http://localhost:8080/api/previous/${songId}`);
+  const data = await response.json();
+  if (response.status === 200) {
+    audioElem.current.pause();
+    audioElem.current = new Audio(data.previousTrack[0].file);
+    setMusic(
+      data.previousTrack[0].file,
+      setPreviousOrNextSongId(data.previousTrack[0]._id)
+    );
+  } else {
+    console.log("No previous song");
+  }
+};
 const getData = async (songId, dataSetter) => {
   const response = await fetch(`http://localhost:8080/api/${songId}`);
   const data = await response.json();
   dataSetter(data.song.file);
 };
+
 const AudioPlayer = ({ sameRender, playorpause, songId }) => {
   const [music, setMusic] = useState("");
-  const [playSong, setPlaySong] = useState();
-  const [nextSongId, setNextSongId] = useState("");
-  const [previousSongId, setPreviousSongId] = useState("");
+  const [previousOrNextSongId, setPreviousOrNextSongId] = useState("");
   const audioElem = useRef();
 
   useEffect(() => {
@@ -40,68 +119,38 @@ const AudioPlayer = ({ sameRender, playorpause, songId }) => {
     sameRender(boolean);
   };
   const fetchpreviousSong = async () => {
-    if (previousSongId === "") {
-      const response = await fetch(
-        `http://localhost:8080/api/previous/${songId}`
+    if (previousOrNextSongId === "") {
+      await fetchPreviousTrack(
+        audioElem,
+        songId,
+        setMusic,
+        setPreviousOrNextSongId
       );
-      const data = await response.json();
-      if (response.status === 200) {
-        audioElem.current.pause();
-        audioElem.current = new Audio(data.previousTrack[0].file);
-        setMusic(
-          data.previousTrack[0].file,
-          setPreviousSongId(data.previousTrack[0]._id)
-        );
-      } else {
-        console.log("No previous song");
-      }
     } else {
-      const response = await fetch(
-        `http://localhost:8080/api/previous/${previousSongId}`
+      await fetchPreviousTrackWithNewSongId(
+        audioElem,
+        previousOrNextSongId,
+        setPreviousOrNextSongId,
+        setMusic
       );
-      const data = await response.json();
-      if (response.status === 200) {
-        audioElem.current.pause();
-        audioElem.current = new Audio(data.previousTrack[0].file);
-        setPreviousSongId(
-          data.previousTrack[0]._id,
-          getData(data.previousTrack[0]._id, setMusic)
-        );
-      } else {
-        console.log("No previous track");
-      }
     }
   };
 
   const fetchNextSong = async () => {
-    if (previousSongId === "") {
-      const response = await fetch(`http://localhost:8080/api/next/${songId}`);
-      const data = await response.json();
-      if (response.status === 200) {
-        audioElem.current.pause();
-        audioElem.current = new Audio(data.nextTrack[0].file);
-        setMusic(
-          data.nextTrack[0].file,
-          setPreviousSongId(data.nextTrack[0]._id)
-        );
-      } else {
-        console.log("No next track");
-      }
-    } else {
-      const response = await fetch(
-        `http://localhost:8080/api/next/${previousSongId}`
+    if (previousOrNextSongId === "") {
+      await fetchNextTrack(
+        audioElem,
+        setMusic,
+        songId,
+        setPreviousOrNextSongId
       );
-      const data = await response.json();
-      if (response.status == 200) {
-        audioElem.current.pause();
-        audioElem.current = new Audio(data.nextTrack[0].file);
-        setPreviousSongId(
-          data.nextTrack[0]._id,
-          getData(data.nextTrack[0]._id, setMusic)
-        );
-      } else {
-        console.log("No next song");
-      }
+    } else {
+      await fetchNextTrackWithNewSongId(
+        audioElem,
+        previousOrNextSongId,
+        setPreviousOrNextSongId,
+        setMusic
+      );
     }
   };
 
@@ -130,6 +179,13 @@ const AudioPlayer = ({ sameRender, playorpause, songId }) => {
           alt="track-forward-icon"
           onClick={fetchNextSong}
         ></img>
+
+        <div
+          className="seek_bar"
+          style={{
+            widht: `${music.progress + "%"}`,
+          }}
+        ></div>
       </div>
     );
   }
