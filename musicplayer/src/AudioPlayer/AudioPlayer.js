@@ -89,20 +89,41 @@ const getData = async (songId, dataSetter) => {
   const data = await response.json();
   dataSetter(data.song.file);
 };
-
+//------------------------------------------------------------------------------------------
 const AudioPlayer = ({ sameRender, playorpause, songId }) => {
   const [music, setMusic] = useState("");
   const [previousOrNextSongId, setPreviousOrNextSongId] = useState("");
+  const [duration, setDuration] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
   const audioElem = useRef();
+  const progressBar = useRef();
+  const animationRef = useRef();
 
   useEffect(() => {
+    // //to display time
+    // if (music !== "") {
+    //   const seconds = Math.floor(audioElem.current.duration);
+    //   setDuration(seconds);
+    // }
+
     if (playorpause == true && music !== "") {
-      audioElem.current.play();
+      const seconds = Math.floor(audioElem.current.duration);
+      console.log(audioElem.current);
+      setDuration(seconds);
+
+      if (!isNaN(seconds)) {
+        console.log(seconds);
+
+        audioElem.current.play();
+        animationRef.current = requestAnimationFrame(whilePlaying);
+      }
+      // audioElem.current.play();
     }
     if (playorpause == false) {
       audioElem.current.pause();
+      cancelAnimationFrame(animationRef.current);
     }
-  }, [playorpause, music]);
+  }, [playorpause, music, duration]);
 
   useEffect(() => {
     const fetchMusic = async () => {
@@ -154,6 +175,31 @@ const AudioPlayer = ({ sameRender, playorpause, songId }) => {
     }
   };
 
+  const whilePlaying = () => {
+    progressBar.current.value = audioElem.current.currentTime;
+    changeCurrentTime();
+    animationRef.current = requestAnimationFrame(whilePlaying);
+  };
+  const CalculateTime = (sec) => {
+    const minutes = Math.floor(sec / 60);
+    const returnMin = minutes < 10 ? `0${minutes}` : `${minutes}`;
+    const seconds = Math.floor(sec % 60);
+    const returnSec = minutes < 10 ? `0${seconds}` : `${seconds}`;
+    return `${returnMin} : ${returnSec}`;
+  };
+  const changeProgress = () => {
+    audioElem.current.currentTime = progressBar.current.value;
+    changeCurrentTime();
+  };
+  const changeCurrentTime = () => {
+    progressBar.current.style.setProperty(
+      "--player-played",
+      `${(progressBar.current.value / duration) * 100}%`
+    );
+
+    setCurrentTime(progressBar.current.value);
+  };
+
   if (playorpause === undefined) {
     return (
       <div style={{ color: "white" }}>
@@ -166,6 +212,7 @@ const AudioPlayer = ({ sameRender, playorpause, songId }) => {
         <figure>
           <audio src={music} ref={audioElem}></audio>
         </figure>
+
         <img
           src={BackwardStepIcon}
           alt="backward-step-icon"
@@ -186,6 +233,20 @@ const AudioPlayer = ({ sameRender, playorpause, songId }) => {
             widht: `${music.progress + "%"}`,
           }}
         ></div>
+        <div>
+          <span className="currentTime">{CalculateTime(currentTime)}</span>
+          <input
+            type="range"
+            className="progressbar"
+            defaultValue="0"
+            ref={progressBar}
+            onChange={changeProgress}
+            disabled
+          ></input>
+          <span className="duration">
+            {!isNaN(duration) ? CalculateTime(duration) : "00:00"}
+          </span>
+        </div>
       </div>
     );
   }
