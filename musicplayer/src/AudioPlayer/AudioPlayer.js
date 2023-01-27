@@ -182,9 +182,10 @@ const AudioPlayer = ({ sameRender, playorpause, songId }) => {
   };
   const CalculateTime = (sec) => {
     const minutes = Math.floor(sec / 60);
+    console.log(minutes);
     const returnMin = minutes < 10 ? `0${minutes}` : `${minutes}`;
     const seconds = Math.floor(sec % 60);
-    const returnSec = minutes < 10 ? `0${seconds}` : `${seconds}`;
+    const returnSec = seconds < 10 ? `0${seconds}` : `${seconds}`;
     return `${returnMin} : ${returnSec}`;
   };
   const changeProgress = () => {
