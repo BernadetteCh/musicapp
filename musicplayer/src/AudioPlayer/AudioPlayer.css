@@ -52,11 +52,57 @@ figure {
   width: 15px;
   height: 25px;
 }
+.duration {
+  color: white;
+}
+.currentTime {
+  color: white;
+}
 
-.seek_bar {
-  width: 0;
+input[type="range"] {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.progressbar {
+  width: 78%;
+  position: relative;
+  height: 5px;
+  outline: none;
+  appearance: none;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Chrome & Safari */
+
+.progressbar:before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+
+  background: #848484;
+  width: var(--player-played);
   height: 100%;
-  background-color: green;
-  border-radius: 30px;
-  padding: 5px;
+  border-radius: 10px;
+  z-index: 2;
+  transition: width 250ms linear;
+}
+.progressbar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  /* margin: -2px 0 0 0; */
+
+  z-index: 3;
+  box-sizing: border-box;
+  transition: all 250ms linear;
+
+  background: #f1f1f1;
 }
