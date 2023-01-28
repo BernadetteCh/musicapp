@@ -210,7 +210,7 @@ const AudioPlayer = ({ sameRender, playorpause, songId }) => {
   } else {
     return (
       <div className="audioplayer-container">
-        <audio src={music} ref={audioElem} preload="metadata"></audio>
+        <audio src={music} ref={audioElem}></audio>
         <div className="audioplayer-icons">
           <img
             src={BackwardStepIcon}

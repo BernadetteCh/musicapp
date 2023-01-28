@@ -29,7 +29,14 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Container className="container">
+      <Container
+        style={{
+          padding: "0px",
+          margin: "0px",
+          maxWidth: "100%",
+        }}
+        className="container"
+      >
         <Row>
           <Col sm={3}>
             <Navigation />
@@ -56,6 +63,7 @@ function App() {
             </Routes>
           </Col>
         </Row>
+
         <AudioPlayer
           sameRender={playPauseSong}
           playorpause={playing}
