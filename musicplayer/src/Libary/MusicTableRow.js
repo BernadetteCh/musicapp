@@ -45,6 +45,7 @@ const MusicTableRow = ({
     console.log("FIRST CONDITION");
     return (
       <tr>
+        <td style={{ color: "white" }}>{index + 1}.</td>
         <td>
           <img
             src={PlayIcon}
