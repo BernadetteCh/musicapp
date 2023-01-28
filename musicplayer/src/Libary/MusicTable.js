@@ -45,6 +45,7 @@ const MusicTable = ({ sameRender, state, playSong }) => {
         <thead>
           <tr>
             <th></th>
+            <th></th>
             <th>Title</th>
             <th>Artist</th>
             <th>Icon for favorite</th>
