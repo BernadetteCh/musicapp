@@ -1,16 +1,21 @@
-figure {
+.audioplayer-icons {
+  width: 40%;
+  margin: 0px auto;
   display: flex;
   justify-content: space-around;
 }
 
 .audioplayer-container {
-  margin: 50px auto;
-  max-width: 400px;
+  margin: 0px auto;
+  width: 100%;
+
+  /* max-width: 400px; */
 
   /* position: fixed;
   width: 100%;
   bottom: 15px; */
 }
+
 .track-back-icon,
 .track-forward-icon,
 .play-icon,
@@ -58,13 +63,17 @@ figure {
 .currentTime {
   color: white;
 }
-
-input[type="range"] {
-  padding-left: 0px;
-  padding-right: 0px;
+.seek_bar-container {
+  /* display: flex; */
+  width: 50%;
+  margin: 0px auto;
+  /* justify-content: flex-end; */
 }
+
 .progressbar {
   width: 78%;
+  margin: 0px auto;
+  margin-right: 0px;
   position: relative;
   height: 5px;
   outline: none;
@@ -81,7 +90,6 @@ input[type="range"] {
   content: "";
   top: 0;
   left: 0;
-
   background: #848484;
   width: var(--player-played);
   height: 100%;
@@ -98,11 +106,25 @@ input[type="range"] {
   outline: none;
   cursor: pointer;
   position: relative;
-  /* margin: -2px 0 0 0; */
+  margin: -2px 0 0 0;
 
   z-index: 3;
   box-sizing: border-box;
   transition: all 250ms linear;
-
   background: #f1f1f1;
 }
+
+/* .currentTime,
+.duration {
+  color: #f1f1f1;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.currentTime {
+  margin-right: 20px;
+}
+
+.duration {
+  margin-left: 20px;
+} */

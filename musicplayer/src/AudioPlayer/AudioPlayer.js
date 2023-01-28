@@ -210,39 +210,37 @@ const AudioPlayer = ({ sameRender, playorpause, songId }) => {
   } else {
     return (
       <div className="audioplayer-container">
-        <figure>
-          <audio src={music} ref={audioElem}></audio>
-        </figure>
+        <audio src={music} ref={audioElem} preload="metadata"></audio>
+        <div className="audioplayer-icons">
+          <img
+            src={BackwardStepIcon}
+            alt="backward-step-icon"
+            className="track-back-icon"
+            onClick={fetchpreviousSong}
+          ></img>
+          <PlayerPauseIcon sameRender={playPause} state={playorpause} />
+          <img
+            src={ForwardStepIcon}
+            className="track-forward-icon"
+            alt="track-forward-icon"
+            onClick={fetchNextSong}
+          ></img>
+        </div>
+        <div className="seek_bar-container">
+          <div
+            className="seek_bar"
+            style={{
+              width: `${music.progress + "%"}`,
+            }}
+          ></div>
 
-        <img
-          src={BackwardStepIcon}
-          alt="backward-step-icon"
-          className="track-back-icon"
-          onClick={fetchpreviousSong}
-        ></img>
-        <PlayerPauseIcon sameRender={playPause} state={playorpause} />
-        <img
-          src={ForwardStepIcon}
-          className="track-forward-icon"
-          alt="track-forward-icon"
-          onClick={fetchNextSong}
-        ></img>
-
-        <div
-          className="seek_bar"
-          style={{
-            widht: `${music.progress + "%"}`,
-          }}
-        ></div>
-        <div>
           <span className="currentTime">{CalculateTime(currentTime)}</span>
           <input
             type="range"
             className="progressbar"
-            defaultValue="0"
             ref={progressBar}
             onChange={changeProgress}
-            disabled
+            style={{ display: "inline-block" }}
           ></input>
           <span className="duration">
             {!isNaN(duration) ? CalculateTime(duration) : "00:00"}
