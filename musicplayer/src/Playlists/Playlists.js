@@ -8,7 +8,7 @@ import RockCover from "./rock-playlist.jpg";
 import ClassicCover from "./classic-playlist.jpg";
 import FocusCover from "./focus-playlist.jpeg";
 import HipHopCover from "./hip-hop-playlist.jpg";
-import AustroPopCover from "./austro-pop-playlist.jpg";
+import AustroPopCover from "./austro-pop-playlist.png";
 import NinetiesCover from "./90s-playlist.jpg";
 import MusicAroundTheWorld from "./music-around-the-world.jpg";
 import FavoriteSongs from "./favoriteSongs.jpg";
