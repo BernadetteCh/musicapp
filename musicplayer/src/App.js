@@ -32,6 +32,7 @@ function App() {
       <Container
         style={{
           padding: "0px",
+          marginTop: "50px",
           margin: "0px",
           maxWidth: "100%",
         }}
