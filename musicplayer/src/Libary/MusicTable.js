@@ -40,7 +40,10 @@ const MusicTable = ({ sameRender, state, playSong }) => {
   console.log(music);
   console.log(musicList);
   return (
-    <div className="music-table" style={{ marginTop: "80px" }}>
+    <div
+      className="music-table"
+      style={{ marginTop: "80px", marginBottom: "180px" }}
+    >
       <Table style={{ color: "white" }}>
         <thead>
           <tr>
