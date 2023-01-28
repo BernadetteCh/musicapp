@@ -240,7 +240,7 @@ const AudioPlayer = ({ sameRender, playorpause, songId }) => {
             className="progressbar"
             ref={progressBar}
             onChange={changeProgress}
-            style={{ display: "inline-block" }}
+            style={{ display: "inline-block", marginTop: "20px" }}
           ></input>
           <span className="duration">
             {!isNaN(duration) ? CalculateTime(duration) : "00:00"}
