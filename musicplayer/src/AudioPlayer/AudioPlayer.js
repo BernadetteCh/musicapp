@@ -93,6 +93,7 @@ const getData = async (songId, dataSetter) => {
 const AudioPlayer = ({ sameRender, playorpause, songId }) => {
   const [music, setMusic] = useState("");
   const [previousOrNextSongId, setPreviousOrNextSongId] = useState("");
+  const [localStorageData, setLocalStorageData] = useState("");
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const audioElem = useRef();
@@ -136,6 +137,14 @@ const AudioPlayer = ({ sameRender, playorpause, songId }) => {
     fetchMusic();
   }, [songId, playorpause]);
 
+  useEffect(() => {
+    const items = JSON.parse(window.localStorage.getItem("icon"));
+    if (items) {
+      setLocalStorageData(items);
+    } else {
+      setLocalStorageData("");
+    }
+  }, []);
   const playPause = (boolean) => {
     sameRender(boolean);
   };
@@ -201,10 +210,12 @@ const AudioPlayer = ({ sameRender, playorpause, songId }) => {
     setCurrentTime(progressBar.current.value);
   };
 
-  if (playorpause === undefined) {
+  if (playorpause === undefined && localStorageData === "") {
     return (
-      <div style={{ color: "white" }}>
-        No music selected ,//nothing in localstorage yet?
+      <div className="audioplayer-container">
+        <div style={{ color: "white", textAlign: "center" }}>
+          Here will be an unclickable play pause icon icon
+        </div>
       </div>
     );
   } else {
