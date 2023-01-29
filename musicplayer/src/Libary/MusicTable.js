@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import AudioPlayer from "../AudioPlayer/AudioPlayer";
-import PlayPauseIcon from "../PlayPauseIcon";
+import PlayPauseIcon from "../AudioPlayer/PlayPauseIcon";
 import "../Libary/Libary.css";
 import MusicTableRow from "./MusicTableRow";
 import UnfilledHeart from "../Icons/UnfilledHeart.png";

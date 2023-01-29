@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import PlayerPauseIcon from "../PlayPauseIcon";
+import PlayerPauseIcon from "../AudioPlayer/PlayPauseIcon";
 import BackwardStepIcon from "../Icons/Backward-step.png";
 import ForwardStepIcon from "../Icons/Forward-step.png";
-import "./AudioPlayer.css";
+import "../AudioPlayer/AudioPlayer";
 
 const fetchNextTrackWithNewSongId = async (
   audioElem,
