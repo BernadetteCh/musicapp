@@ -101,30 +101,22 @@ const AudioPlayer = ({ sameRender, playorpause, songId }) => {
   const animationRef = useRef();
 
   useEffect(() => {
-    // //to display time
-    // if (music !== "") {
-    //   const seconds = Math.floor(audioElem.current.duration);
-    //   setDuration(seconds);
-    // }
-
     if (playorpause == true && music !== "") {
+      console.log(audioElem);
       const seconds = Math.floor(audioElem.current.duration);
-      console.log(audioElem.current);
+      console.log(seconds + "SECONDS");
       setDuration(seconds);
 
-      if (!isNaN(seconds)) {
-        console.log(seconds);
-
-        audioElem.current.play();
+      if (!isNaN(duration)) {
         animationRef.current = requestAnimationFrame(whilePlaying);
       }
-      // audioElem.current.play();
+      audioElem.current.play();
     }
     if (playorpause == false) {
       audioElem.current.pause();
       cancelAnimationFrame(animationRef.current);
     }
-  }, [playorpause, music, duration]);
+  }, [playorpause, music, duration, progressBar]);
 
   useEffect(() => {
     const fetchMusic = async () => {
@@ -140,11 +132,12 @@ const AudioPlayer = ({ sameRender, playorpause, songId }) => {
   useEffect(() => {
     const items = JSON.parse(window.localStorage.getItem("icon"));
     if (items) {
-      setLocalStorageData(items);
+      setLocalStorageData(items, getData(items[0].id, setMusic));
     } else {
       setLocalStorageData("");
     }
   }, []);
+
   const playPause = (boolean) => {
     sameRender(boolean);
   };
@@ -191,7 +184,6 @@ const AudioPlayer = ({ sameRender, playorpause, songId }) => {
   };
   const CalculateTime = (sec) => {
     const minutes = Math.floor(sec / 60);
-    console.log(minutes);
     const returnMin = minutes < 10 ? `0${minutes}` : `${minutes}`;
     const seconds = Math.floor(sec % 60);
     const returnSec = seconds < 10 ? `0${seconds}` : `${seconds}`;
@@ -249,6 +241,7 @@ const AudioPlayer = ({ sameRender, playorpause, songId }) => {
           <input
             type="range"
             className="progressbar"
+            defaultValue={0}
             ref={progressBar}
             onChange={changeProgress}
             style={{ display: "inline-block", marginTop: "20px" }}

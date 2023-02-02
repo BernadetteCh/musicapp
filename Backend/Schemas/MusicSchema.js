@@ -5,6 +5,7 @@ const musicSchema = new mongoose.Schema({
   artist: "String",
   playlist: "String",
   file: "String",
+  favorite: "Boolean",
 });
 
 module.exports = mongoose.model("songs", musicSchema);

@@ -8,6 +8,7 @@ const AddMusic = () => {
     title: "",
     artist: "",
     playlist: "",
+    favorite: "false",
   });
 
   const uploadFile = (e) => {

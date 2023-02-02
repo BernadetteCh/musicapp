@@ -20,7 +20,6 @@ const MusicTableRow = ({
   const [audioIcon, setAudioIcon] = useState([
     { audioIcon: "no music yet", id: id, index: index },
   ]);
-  const [indexWhenSongChanges, setIndexWhenSongChanges] = useState();
 
   useEffect(() => {
     if (audioIcon[0].audioIcon !== "no music yet") {
@@ -34,6 +33,7 @@ const MusicTableRow = ({
       setAudioIcon(items);
     }
   }, []);
+
   useEffect(() => {
     if (audioIcon[0].id !== id) {
       console.log("YEAHHHHHHHH");
@@ -56,8 +56,7 @@ const MusicTableRow = ({
           onClick={() => {
             setAudioIcon(
               [{ audioIcon: true, id: id, index: index }],
-              playMusic(true),
-              setIndexWhenSongChanges(index)
+              playMusic(true)
             );
           }}
         >
@@ -88,8 +87,7 @@ const MusicTableRow = ({
           onClick={() => {
             setAudioIcon(
               [{ audioIcon: false, id: id, index: index }],
-              playMusic(false),
-              setIndexWhenSongChanges(index)
+              playMusic(false)
             );
           }}
         >
@@ -120,8 +118,7 @@ const MusicTableRow = ({
           onClick={() => {
             setAudioIcon(
               [{ audioIcon: true, id: id, index: index }],
-              playMusic(true),
-              setIndexWhenSongChanges(index)
+              playMusic(true)
             );
           }}
         >

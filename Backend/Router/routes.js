@@ -14,6 +14,7 @@ router.post("/newSong", async (req, res) => {
     artist: req.body.artist,
     playlist: req.body.playlist,
     file: req.body.file,
+    favorite: req.body.favorite,
   });
   try {
     await newMusic.save();
