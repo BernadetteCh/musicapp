@@ -58,11 +58,11 @@ const MusicTable = ({ sameRender, state, playSong }) => {
         <tbody>
           {music === undefined
             ? console.log("...loadig")
-            : music.map((data, key) => {
+            : music.map((data, index) => {
                 return (
                   <MusicTableRow
-                    key={key}
-                    index={key}
+                    key={index}
+                    index={index}
                     id={data._id}
                     title={data.title}
                     artist={data.artist}

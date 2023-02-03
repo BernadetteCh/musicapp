@@ -10,7 +10,6 @@ const PlayPauseIcon = ({ sameRender, state }) => {
     // setPlaying(boolean, sameRender(boolean));
     sameRender(boolean);
   };
-  console.log(state);
 
   if (state) {
     return (
