@@ -101,18 +101,17 @@ const AudioPlayer = ({ sameRender, playorpause, songId }) => {
   const animationRef = useRef();
 
   useEffect(() => {
-    if (playorpause == true && music !== "") {
-      console.log(audioElem);
+    if (playorpause === true && music !== "") {
       const seconds = Math.floor(audioElem.current.duration);
-      console.log(seconds + "SECONDS");
       setDuration(seconds);
 
       if (!isNaN(duration)) {
         animationRef.current = requestAnimationFrame(whilePlaying);
       }
+      audioElem.current.pause();
       audioElem.current.play();
     }
-    if (playorpause == false) {
+    if (playorpause === false) {
       audioElem.current.pause();
       cancelAnimationFrame(animationRef.current);
     }
@@ -247,7 +246,7 @@ const AudioPlayer = ({ sameRender, playorpause, songId }) => {
             style={{ display: "inline-block", marginTop: "20px" }}
           ></input>
           <span className="duration">
-            {!isNaN(duration) ? CalculateTime(duration) : "00:00"}
+            {!isNaN(CalculateTime(duration)) ? "BErni" : "00:00"}
           </span>
         </div>
       </div>
