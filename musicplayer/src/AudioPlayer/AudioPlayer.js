@@ -14,7 +14,7 @@ const fetchNextTrackWithNewSongId = async (
     `http://localhost:8080/api/next/${previousOrNextSongId}`
   );
   const data = await response.json();
-  if (response.status == 200) {
+  if (response.status === 200) {
     audioElem.current.pause();
     audioElem.current = new Audio(data.nextTrack[0].file);
     setPreviousOrNextSongId(
@@ -103,11 +103,14 @@ const AudioPlayer = ({ sameRender, playorpause, songId }) => {
   useEffect(() => {
     if (playorpause === true && music !== "") {
       const seconds = Math.floor(audioElem.current.duration);
+      console.log(seconds);
       setDuration(seconds);
 
-      if (!isNaN(duration)) {
+      if (!isNaN(seconds)) {
+        console.log("SECINDSASFAF");
         animationRef.current = requestAnimationFrame(whilePlaying);
       }
+
       audioElem.current.pause();
       audioElem.current.play();
     }
@@ -119,17 +122,19 @@ const AudioPlayer = ({ sameRender, playorpause, songId }) => {
 
   useEffect(() => {
     const fetchMusic = async () => {
-      if (songId == undefined || playorpause == undefined) {
+      if (songId === undefined || playorpause === undefined) {
         console.log("no id yet");
       } else {
         await getData(songId, setMusic);
       }
     };
     fetchMusic();
+    console.log(localStorageData);
   }, [songId, playorpause]);
 
   useEffect(() => {
     const items = JSON.parse(window.localStorage.getItem("icon"));
+
     if (items) {
       setLocalStorageData(items, getData(items[0].id, setMusic));
     } else {
@@ -182,6 +187,7 @@ const AudioPlayer = ({ sameRender, playorpause, songId }) => {
     animationRef.current = requestAnimationFrame(whilePlaying);
   };
   const CalculateTime = (sec) => {
+    console.log(sec);
     const minutes = Math.floor(sec / 60);
     const returnMin = minutes < 10 ? `0${minutes}` : `${minutes}`;
     const seconds = Math.floor(sec % 60);
@@ -210,6 +216,7 @@ const AudioPlayer = ({ sameRender, playorpause, songId }) => {
       </div>
     );
   } else {
+    console.log("DURATION" + duration);
     return (
       <div className="audioplayer-container">
         <audio src={music} ref={audioElem}></audio>
@@ -246,7 +253,7 @@ const AudioPlayer = ({ sameRender, playorpause, songId }) => {
             style={{ display: "inline-block", marginTop: "20px" }}
           ></input>
           <span className="duration">
-            {!isNaN(CalculateTime(duration)) ? "BErni" : "00:00"}
+            {!isNaN(duration) ? CalculateTime(duration) : "00:00"}
           </span>
         </div>
       </div>
