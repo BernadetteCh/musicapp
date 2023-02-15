@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
-import AudioPlayer from "../AudioPlayer/AudioPlayer";
-import PlayPauseIcon from "../AudioPlayer/PlayPauseIcon";
 import "../Libary/Libary.css";
 import MusicTableRow from "./MusicTableRow";
-import UnfilledHeart from "../Icons/UnfilledHeart.png";
-import FilledHeart from "../Icons/Heartfilled.png";
 
 const fetchMusic = async (dataSetter) => {
   const response = await fetch("http://localhost:8080/api/");
@@ -69,49 +65,8 @@ const MusicTable = ({ sameRender, state, playSong }) => {
                   />
                 );
               })}
-          {/* <tr>
-            <td>
-              <PlayPauseIcon sameRender={playPause} state={state} />
-            </td>
-            <td>I Walk On Water</td>
-            <td>Kaleo</td>
-            <td>
-              <img
-                src={UnfilledHeart}
-                className="favorite-song"
-                alt="no-favorite-song"
-              ></img>
-              <img
-                src={FilledHeart}
-                className="favorite-song"
-                alt="favorite-song"
-              ></img>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <PlayPauseIcon sameRender={playPause} state={state} />
-            </td>
-            <td>Bohemian Rhapsody </td>
-            <td>Queen</td>
-            <td>
-              <img
-                src={UnfilledHeart}
-                className="favorite-song"
-                alt="no-favorite-song"
-              ></img>
-              <img
-                src={FilledHeart}
-                className="favorite-song"
-                alt="favorite-song"
-              ></img>
-            </td>
-          </tr> */}
         </tbody>
       </Table>
-      {/* <div>
-        <AudioPlayer sameRender={playPause} playorpause={boolean} songId={id} />
-      </div> */}
     </div>
   );
 };
