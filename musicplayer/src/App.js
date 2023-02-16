@@ -42,7 +42,7 @@ function App() {
           <Col sm={3}>
             <Navigation />
           </Col>
-          <Col className="home-section">
+          <Col>
             <Routes>
               <Route path="/" element={<Home />}></Route>
               <Route
