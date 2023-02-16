@@ -69,47 +69,48 @@ const AddMusic = () => {
   };
 
   return (
-    // <div style={{ marginLeft: "5%" }} className="mb-5">
-    <form>
-      <input
-        type="file"
-        name="file"
-        placeholder="add mp3 file"
-        onChange={uploadFile}
-      />
-      <input
-        type="text"
-        name="title"
-        value={inputValue.title}
-        placeholder="Songtitle"
-        onChange={saveInputValue}
-      />
-      <input
-        type="text"
-        placeholder="Artist"
-        value={inputValue.artist}
-        name="artist"
-        onChange={saveInputValue}
-      />
-      <select
-        // style={{ background: "#d4a50d3d", color: "white" }}
-        name="playlist"
-        onChange={saveInputValue}
-      >
-        <option defaultValue="select" placeholder="select">
-          -- Select Playlist --
-        </option>
-        <option value="Jazz">Jazz</option>
-        <option value="Rock'n&Roll">Rock'n&Roll</option>
-        <option vlaue="Classic">Classic</option>
-        <option value="Focus">Focus</option>
-        <option value="HipHop">HipHop</option>
-        <option value="AustroPoP">AustroPop</option>
-        <option value="90s">90s</option>
-        <option value="Around The World">Around The World</option>
-      </select>
-      <button onClick={sendData}> Add to libary</button>
-    </form>
+    <div className="addmusic-form">
+      <form>
+        <input
+          type="file"
+          name="file"
+          placeholder="add mp3 file"
+          onChange={uploadFile}
+        />
+        <input
+          type="text"
+          name="title"
+          value={inputValue.title}
+          placeholder="Songtitle"
+          onChange={saveInputValue}
+        />
+        <input
+          type="text"
+          placeholder="Artist"
+          value={inputValue.artist}
+          name="artist"
+          onChange={saveInputValue}
+        />
+        <select
+          // style={{ background: "#d4a50d3d", color: "white" }}
+          name="playlist"
+          onChange={saveInputValue}
+        >
+          <option defaultValue="select" placeholder="select">
+            -- Select Playlist --
+          </option>
+          <option value="Jazz">Jazz</option>
+          <option value="Rock'n&Roll">Rock'n&Roll</option>
+          <option vlaue="Classic">Classic</option>
+          <option value="Focus">Focus</option>
+          <option value="HipHop">HipHop</option>
+          <option value="AustroPoP">AustroPop</option>
+          <option value="90s">90s</option>
+          <option value="Around The World">Around The World</option>
+        </select>
+        <button onClick={sendData}> Add to libary</button>
+      </form>
+    </div>
   );
 };
 
