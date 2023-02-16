@@ -20,7 +20,6 @@ table th {
   border-style: none;
   letter-spacing: 4px;
   font-size: 28px;
-
   padding: 10px;
 }
 table td {
@@ -28,7 +27,6 @@ table td {
   border-style: none;
   letter-spacing: 2px;
   font-size: 20px;
-
   padding: 10px;
 }
 
@@ -42,26 +40,6 @@ table td {
 .favorite-song {
   cursor: pointer;
   font-size: 20px;
-
-  /* background: radial-gradient(
-      ellipse farthest-corner at right bottom,
-      #fedb37 0%,
-      #fdb931 8%,
-      #9f7928 30%,
-      #5518aa 30%,
-      transparent 80%
-    ),
-    radial-gradient(
-      ellipse farthest-corner at left top,
-      #ffffff 0%,
-      #ffffac 8%,
-      #d1b464 45%,
-      #5d4a1f 80.5%,
-      #5d4a1f 100%
-    );
-  background-clip: border-box;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;*/
 }
 form select {
   padding: 0.5rem;
@@ -69,54 +47,18 @@ form select {
   border-radius: 12px;
   width: 300px;
   margin-top: 60px;
-
-  /*background-image: linear-gradient(black, black),
-    linear-gradient(
-      to right,
-      #462523 0,
-      #cb9b51 12%,
-      #f6e27a 45%,
-      #f6f2c0 50%,
-      #f6e27a 55%,
-      #cb9b51 78%,
-      #462523 100%
-    );
-*/
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
+  margin-bottom: 50px;
 }
 form option {
   background: #080808;
   color: white;
 }
 
-form button {
-  display: block;
+button {
   background: #080808;
-
-  /* background: radial-gradient(
-      ellipse farthest-corner at right bottom,
-      #fedb37 2%,
-      #fdb931 8%,
-      #9f7928 20%,
-      #5518aa 40%,
-
-      transparent 80%
-    ),
-    radial-gradient(
-      ellipse farthest-corner at left top,
-      #ffffff 0%,
-      #ffffac 8%,
-      #d1b464 25%,
-      #5d4a1f 62.5%,
-      #5d4a1f 100%
-    );*/
+  display: block;
+  margin: 50px;
   color: white;
-  letter-spacing: 4px;
-  padding: 10px 20px;
-  border-radius: 6px;
-  border: none;
-  margin-top: 60px;
 }
 .play-icon {
   font-size: 16px;
@@ -124,3 +66,8 @@ form button {
 .favorite-song {
   width: 28px;
 }
+
+/*    display: flex;
+    justify-content: start;
+     align-items: center; 
+    align-items: start;*/
