@@ -24,6 +24,19 @@ router.post("/newSong", async (req, res) => {
   }
 });
 
+router.post("/filter", async (req, res) => {
+  await Music.find({
+    $or: [
+      { title: { $regex: req.body.userInput } },
+      { artist: { $regex: req.body.userInput } },
+    ],
+  })
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((error) => res.status(400).json({ error }));
+});
+
 router.get("/:songId", async (req, res) => {
   const song = await Music.findById(req.params.songId);
   res.status(200).json({ song });
