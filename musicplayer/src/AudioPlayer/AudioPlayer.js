@@ -118,7 +118,7 @@ const AudioPlayer = ({ sameRender, playorpause, songId }) => {
       audioElem.current.pause();
       cancelAnimationFrame(animationRef.current);
     }
-  }, [playorpause, music, duration, progressBar]);
+  }, [playorpause, music, duration, progressBar, songId]);
 
   useEffect(() => {
     const fetchMusic = async () => {
