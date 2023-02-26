@@ -19,8 +19,6 @@ function App() {
   const [songId, setSongId] = useState("");
 
   const playPauseSong = (boolean) => {
-    console.log(boolean);
-    // setPlaying((playing) => !playing);
     setPlaying(boolean);
   };
   const playSongId = (id) => {
