@@ -7,7 +7,12 @@ body {
   display: flex;
   justify-content: space-around;
 }
-
+.selected {
+  color: green;
+}
+.notselected {
+  color: blue;
+}
 .audioplayer-container {
   margin: 0px auto;
   width: 100%;
