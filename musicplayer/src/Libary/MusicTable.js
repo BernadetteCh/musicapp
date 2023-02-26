@@ -3,14 +3,7 @@ import Table from "react-bootstrap/Table";
 import "../Libary/Libary.css";
 import MusicTableRow from "./MusicTableRow";
 
-const fetchMusic = async (dataSetter) => {
-  const response = await fetch("http://localhost:8080/api/");
-  const data = await response.json();
-  dataSetter(data);
-};
-
-const MusicTable = ({ sameRender, state, playSong }) => {
-  const [songs, setSongs] = useState();
+const MusicTable = ({ sameRender, state, playSong, music }) => {
   const [boolean, setBoolean] = useState();
 
   const playPause = (boolean) => {
@@ -19,14 +12,6 @@ const MusicTable = ({ sameRender, state, playSong }) => {
   const playPauseSong = (id) => {
     playSong(id);
   };
-
-  useEffect(() => {
-    const getData = async () => {
-      await fetchMusic(setSongs);
-    };
-
-    getData();
-  }, []);
 
   return (
     <div
@@ -46,9 +31,9 @@ const MusicTable = ({ sameRender, state, playSong }) => {
           </tr>
         </thead>
         <tbody>
-          {songs === undefined
+          {music === undefined
             ? console.log("...loadig")
-            : songs.map((data, index) => {
+            : music.map((data, index) => {
                 return (
                   <MusicTableRow
                     key={index}
