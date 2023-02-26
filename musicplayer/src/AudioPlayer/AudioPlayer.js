@@ -94,31 +94,11 @@ const AudioPlayer = ({ sameRender, playorpause, songId }) => {
   const [music, setMusic] = useState("");
   const [previousOrNextSongId, setPreviousOrNextSongId] = useState("");
   const [localStorageData, setLocalStorageData] = useState("");
-  const [duration, setDuration] = useState(0);
+  const [duration, setDuration] = useState(1);
   const [currentTime, setCurrentTime] = useState(0);
   const audioElem = useRef();
   const progressBar = useRef();
   const animationRef = useRef();
-
-  useEffect(() => {
-    if (playorpause === true && music !== "") {
-      const seconds = Math.floor(audioElem.current.duration);
-      console.log(seconds);
-      setDuration(seconds);
-
-      if (!isNaN(seconds)) {
-        console.log("SECINDSASFAF");
-        animationRef.current = requestAnimationFrame(whilePlaying);
-      }
-
-      audioElem.current.pause();
-      audioElem.current.play();
-    }
-    if (playorpause === false) {
-      audioElem.current.pause();
-      cancelAnimationFrame(animationRef.current);
-    }
-  }, [playorpause, music, duration, progressBar, songId]);
 
   useEffect(() => {
     const fetchMusic = async () => {
@@ -130,7 +110,39 @@ const AudioPlayer = ({ sameRender, playorpause, songId }) => {
     };
     fetchMusic();
     console.log(localStorageData);
-  }, [songId, playorpause]);
+  }, []);
+
+  useEffect(() => {
+    console.log(audioElem.current);
+    if (playorpause === true && music !== "") {
+      const seconds = Math.floor(audioElem.current.duration);
+      console.log(seconds);
+      setDuration(seconds);
+
+      if (!isNaN(seconds)) {
+        animationRef.current = requestAnimationFrame(whilePlaying);
+      }
+
+      audioElem.current.pause();
+      audioElem.current.play();
+    }
+    if (playorpause === false) {
+      audioElem.current.pause();
+      cancelAnimationFrame(animationRef.current);
+    }
+  }, [playorpause, music, duration, progressBar]);
+
+  useEffect(() => {
+    const fetchMusic = async () => {
+      if (songId === undefined || playorpause === undefined) {
+        console.log("no id yet");
+      } else {
+        await getData(songId, setMusic);
+      }
+    };
+    fetchMusic();
+    console.log(localStorageData);
+  }, [songId, playorpause, localStorageData]);
 
   useEffect(() => {
     const items = JSON.parse(window.localStorage.getItem("icon"));
@@ -182,6 +194,7 @@ const AudioPlayer = ({ sameRender, playorpause, songId }) => {
   };
 
   const whilePlaying = () => {
+    console.log(audioElem.current.currentTime);
     progressBar.current.value = audioElem.current.currentTime;
     changeCurrentTime();
     animationRef.current = requestAnimationFrame(whilePlaying);
