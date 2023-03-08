@@ -71,7 +71,7 @@ const Libary = ({ sameRender, state, playSong }) => {
 
     return () => clearTimeout(timer);
   }, [filterValue]);
-
+  console.log(musicData);
   return (
     <div className="mb-5">
       <AlbumPictures />

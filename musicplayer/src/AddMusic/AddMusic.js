@@ -8,7 +8,7 @@ const AddMusic = () => {
     title: "",
     artist: "",
     playlist: "",
-    favorite: "false",
+    favorite: false,
   });
 
   const uploadFile = (e) => {
@@ -18,6 +18,7 @@ const AddMusic = () => {
     }));
   };
   const saveInputValue = (e) => {
+    console.log(e.target.value);
     setInputValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -43,10 +44,18 @@ const AddMusic = () => {
   const sendData = async (e) => {
     e.preventDefault();
     const base64 = await converBase64();
-    console.log(base64);
-    console.log(inputValue.artist);
-    console.log(inputValue.playlist);
-    console.log(inputValue.title);
+    const audio = document.createElement("audio");
+    audio.src = base64;
+    console.log(audio);
+    console.log(audio.duration);
+    console.log(audio.current);
+    console.log(audio.currentTime);
+    const sec = 0;
+    const minutes = Math.floor(sec / 60);
+    const returnMin = minutes < 10 ? `0${minutes}` : `${minutes}`;
+    const seconds = Math.floor(sec % 60);
+    const returnSec = seconds < 10 ? `0${seconds}` : `${seconds}`;
+    console.log(returnMin + returnSec);
     const response = await fetch("http://localhost:8080/api/newSong", {
       method: "POST",
       headers: {

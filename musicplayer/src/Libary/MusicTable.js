@@ -5,12 +5,40 @@ import MusicTableRow from "./MusicTableRow";
 
 const MusicTable = ({ sameRender, state, playSong, music }) => {
   const [boolean, setBoolean] = useState();
+  const [clickedTableRow, setClickedTableRow] = useState(null);
+  const [songid, setSongid] = useState("");
+
+  const [audioIcon, setAudioIcon] = useState([
+    {
+      audioIcon: "no music yet",
+      id: songid,
+      index: clickedTableRow,
+      isActive: false,
+    },
+  ]);
+
+  useEffect(() => {
+    if (audioIcon[0].audioIcon !== "no music yet") {
+      window.localStorage.setItem("icon", JSON.stringify(audioIcon));
+    }
+  }, [audioIcon]);
+
+  useEffect(() => {
+    const items = JSON.parse(window.localStorage.getItem("icon"));
+    if (items) {
+      setAudioIcon(items);
+    }
+  }, []);
 
   const playPause = (boolean) => {
     setBoolean(boolean, sameRender(boolean));
   };
   const playPauseSong = (id) => {
-    playSong(id);
+    setSongid(playSong(id));
+  };
+
+  const saveIndex = (index) => {
+    setClickedTableRow(index);
   };
 
   return (
@@ -47,6 +75,10 @@ const MusicTable = ({ sameRender, state, playSong, music }) => {
                     myKey={data._id}
                     state={state}
                     playSong={playPauseSong}
+                    saveIndex={saveIndex}
+                    clickedRow={clickedTableRow}
+                    setAudioIcon={setAudioIcon}
+                    audioIcon={audioIcon}
                   />
                 );
               })}

@@ -114,7 +114,7 @@ const AudioPlayer = ({ sameRender, playorpause, songId }) => {
 
   useEffect(() => {
     console.log(audioElem.current);
-    if (playorpause === true && music !== "") {
+    if ((playorpause === true && music !== "") || localStorageData != "") {
       const seconds = Math.floor(audioElem.current.duration);
       console.log(seconds);
       setDuration(seconds);
@@ -130,7 +130,7 @@ const AudioPlayer = ({ sameRender, playorpause, songId }) => {
       audioElem.current.pause();
       cancelAnimationFrame(animationRef.current);
     }
-  }, [playorpause, music, duration, progressBar]);
+  }, [playorpause, music, duration, progressBar, localStorageData]);
 
   useEffect(() => {
     const fetchMusic = async () => {
@@ -141,7 +141,6 @@ const AudioPlayer = ({ sameRender, playorpause, songId }) => {
       }
     };
     fetchMusic();
-    console.log(localStorageData);
   }, [songId, playorpause, localStorageData]);
 
   useEffect(() => {
