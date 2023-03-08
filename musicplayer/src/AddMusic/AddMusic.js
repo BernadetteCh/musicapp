@@ -19,6 +19,7 @@ const AddMusic = () => {
   };
   const saveInputValue = (e) => {
     console.log(e.target.value);
+
     setInputValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -66,6 +67,7 @@ const AddMusic = () => {
         file: base64,
         title: inputValue.title,
         artist: inputValue.artist,
+        favorite: inputValue.favorite,
         playlist: inputValue.playlist,
       }),
     });
